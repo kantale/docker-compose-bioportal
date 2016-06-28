@@ -12,6 +12,8 @@
 
 ## Using
 
+Docker version 1.11.2
+
 * 4store (vemonet/bioportal-4store)
 * mgrep (vemonet/bioportal-mgrep)
 * solr (vemonet/bioportal-solr)
