@@ -1,6 +1,12 @@
 
 # A docker compose for BioPortal
 
+## Add the dictionary.txt
+
+The mgrep container is using the dictionary from your machine at `/srv/mgrep/mgrep-55555/dictionary.txt` (see volumes in docker-compose.yml)
+
+You need to copy the dictionary.txt from this git repository to the path where it will be used on your machine (here /srv/mgrep/mgrep-55555/dictionary.txt if you don't change the YML)
+
 ## Run the containers
 
 `docker-compose up -d`

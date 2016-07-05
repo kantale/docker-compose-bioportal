@@ -8,6 +8,8 @@ services:
     image: vemonet/bioportal-mgrep
     ports: 
       - "55555:55555"
+    volumes:
+      - /srv/mgrep/mgrep-55555:/opt/mgrep/dictionary
   solr:
     image: vemonet/bioportal-solr
     ports: 
