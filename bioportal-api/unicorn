@@ -1,7 +1,7 @@
 #!/bin/sh
 
 prog=unicorn
-APP_ROOT=/srv/ncbo/ontologies_api/current
+APP_ROOT=/srv/ncbo/ontologies_api
 ENVIRONMENT=production
 UNICORN_CONF=$APP_ROOT/config/unicorn.rb
 lockfile=/var/run/unicorn/unicorn.lock
