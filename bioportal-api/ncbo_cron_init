@@ -1,3 +1,4 @@
+#!/bin/sh
 prog=ncbo_cron
 APP_HOME=/srv/ncbo/ncbo_cron
 lockfile=/var/lock/subsys/${prog}
@@ -8,4 +9,3 @@ export PATH=${RUBY_PATH}:$PATH:/usr/local/bin
 exec=${APP_HOME}/bin/${prog}
 cd $APP_HOME
 $exec $OPTS
-
