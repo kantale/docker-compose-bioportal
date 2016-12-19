@@ -26,4 +26,10 @@ services:
     image: redis:3.0.7-alpine
     ports: 
       - "6381:6379"
-  
+  bioportal:
+    build: ./bioportal-api/
+    container_name: bioportal-api
+    volumes:
+      - /srv/ncbo:/srv/ncbo
+    ports:
+      - "8080:8080"
