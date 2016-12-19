@@ -26,7 +26,7 @@ services:
     image: redis:3.0.7-alpine
     ports: 
       - "6381:6379"
-  bioportal:
+  bioportal-api:
     build: ./bioportal-api/
     container_name: bioportal-api
     volumes:
