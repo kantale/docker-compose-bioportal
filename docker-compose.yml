@@ -9,7 +9,7 @@ services:
     ports: 
       - "55555:55555"
     volumes:
-      - /srv/mgrep/mgrep-55555:/opt/mgrep/dictionary
+      - /Users/tchechem/wslirmm/bioportal/mgrep-55555:/opt/mgrep/dictionary
   solr:
     image: vemonet/bioportal-solr
     ports: 
@@ -26,3 +26,4 @@ services:
     image: redis:3.0.7-alpine
     ports: 
       - "6381:6379"
+  
