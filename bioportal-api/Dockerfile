@@ -17,10 +17,12 @@ RUN gem install rails
 
 COPY ncbo_cron_init /srv/ncbo/
 
+# Copy config files
 COPY config_cron.rb /srv/ncbo/ncbo_cron/config/config.rb
 COPY config_api.rb /srv/ncbo/ontologies_api/config/environments/production.rb
-COPY unicorn /srv/ncbo/
+COPY unicorn.rb /srv/ncbo/ontologies_api/config/unicorn.rb
 
+COPY unicorn /srv/ncbo/
 
 
 WORKDIR /srv/ncbo/
