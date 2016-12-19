@@ -9,6 +9,10 @@ COPY nginx.conf /etc/nginx.conf
 
 RUN cd /srv/ncbo && git clone https://github.com/sifrproject/ontologies_api.git && git clone https://github.com/sifrproject/ncbo_cron.git
 
+RUN cd /srv/ncbo/ontologies_api/ && bundle install
+
+RUN cd /srv/ncbo/ncbo_cron/ && bundle install 
+
 RUN gem install rails
 
 COPY ncbo_cron_init /srv/ncbo/
