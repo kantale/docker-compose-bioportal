@@ -16,6 +16,7 @@ RUN cd /srv/ncbo/ncbo_cron/ && bundle install
 RUN gem install rails
 
 COPY ncbo_cron_init /srv/ncbo/
+COPY config.rb /srv/ncbo/ncbo_cron/config
 COPY unicorn /srv/ncbo/
 
 
