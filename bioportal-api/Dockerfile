@@ -1,9 +1,12 @@
 FROM nginx
 COPY nginx.conf /etc/nginx.conf
 EXPOSE 8080:80
+
 RUN mkdir /srv/ncbo/
-COPY ncbo_cron /srv/ncbo/
-COPY ontologies_api /srv/ncbo/
+RUN apt-get update
+RUN apt-get install -y git
+RUN pushd /srv/ncbo && git clone https://github.com/sifrproject/ontologies_api.git && git clone https://github.com/sifrproject/ncbo_cron.git && popd
+
 COPY ncbo_cron_init /srv/ncbo/
 COPY unicorn /srv/ncbo/
 
