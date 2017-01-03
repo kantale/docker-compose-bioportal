@@ -19,8 +19,8 @@ RUN apt-get -y install nginx-full
 
 # Copy config files
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY config_cron.rb /srv/ncbo/ncbo_cron/config/config.rb
-COPY config_api.rb /srv/ncbo/ontologies_api/config/environments/production.rb
+COPY config.rb /srv/ncbo/ncbo_cron/config/config.rb
+COPY config.rb /srv/ncbo/ontologies_api/config/environments/production.rb
 COPY unicorn.rb /srv/ncbo/ontologies_api/config/unicorn.rb
 COPY french_stop_words.txt /srv/ncbo/ncbo_cron/config/french_stop_words.txt
 COPY english_stop_words.txt /srv/ncbo/ncbo_cron/config/english_stop_words.txt

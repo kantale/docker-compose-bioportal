@@ -9,7 +9,7 @@ services:
     ports: 
       - "55555:55555"
     volumes:
-      - /Users/tchechem/wslirmm/bioportal/mgrep-55555:/opt/mgrep/dictionary
+      - /srv/mgrep/mgrep-55555/:/opt/mgrep/dictionary
   solr:
     image: vemonet/bioportal-solr
     ports: 
@@ -30,6 +30,6 @@ services:
     build: ./bioportal-api/
     container_name: bioportal-api
     volumes:
-        - /srv/ncbo/repository:/srv/ncbo/repository
+        - /srv/bioportal/:/srv/bioportal/
     ports:
       - "8080:8080"

@@ -12,16 +12,16 @@ require 'socket'
   end
 
 $LOCAL_IP = local_ip
-$SITE_URL = "bioportal.lirmm.fr"
+$SITE_URL = "localhost"
 
 begin
   LinkedData.config do |config|
-    config.repository_folder  = "/srv/ncbo/repository"
+    config.repository_folder  = "/srv/bioportal/repository"
     config.goo_host           = "localhost"
-    config.goo_port           = 8081
-    config.search_server_url  = "http://localhost:8082/solr/core1"
-    config.rest_url_prefix    = "http://data.#{$SITE_URL}/"
-    config.replace_url_prefix = true
+    config.goo_port           = 9000
+    config.search_server_url  = "http://localhost:8083/solr/core1"
+    config.rest_url_prefix   = "http://localhost:9393/"
+    config.enable_security   = false
     config.id_url_prefix      = "http://data.bioontology.org/"
     config.enable_security    = false # set on false for CRON
     config.apikey             = "24e0e77e-54e0-11e0-9d7b-005056aa3316"
@@ -44,7 +44,7 @@ begin
     config.http_redis_port    = 6380
     config.enable_http_cache  = true
     config.goo_redis_host     = "localhost"
-    config.goo_redis_port     = 6382
+    config.goo_redis_port     = 6381
 
     Goo.use_cache             = true
 
@@ -62,17 +62,17 @@ begin
 
     # PURL server config parameters
     config.enable_purl            = false
-    config.purl_host              = "purl.example.org"
+    config.purl_host              = "localhost"
     config.purl_port              = 80
     config.purl_username          = "admin"
     config.purl_password          = "password"
     config.purl_maintainers       = "admin"
-    config.purl_target_url_prefix = "http://example.org"
+    config.purl_target_url_prefix = "localhost"
 
     # Ontology Google Analytics Redis
     # disabled
     config.ontology_analytics_redis_host = "localhost"
-    config.enable_ontology_analytics = true
+    config.enable_ontology_analytics = false
     config.ontology_analytics_redis_port = 6379
 end
 rescue NameError
@@ -105,13 +105,13 @@ end
 
 begin
   LinkedData::OntologiesAPI.config do |config|
-    config.enable_unicorn_workerkiller = true
-    config.enable_throttling           = false
-    config.enable_monitoring           = false
     config.cube_host                   = "localhost"
     config.http_redis_host             = "localhost"
-    config.http_redis_port             = 6380
-    config.ontology_rank               = ""
+    config.http_redis_port             = 6379
+    config.ontology_rank
+    config.resolver_redis_host = "localhost"
+    config.resolver_redis_port = 6379
+    config.restrict_download = []
 end
 rescue NameError
 	  puts "(CNFG) >> OntologiesAPI not available, cannot load config"
