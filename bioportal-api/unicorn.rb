@@ -1,15 +1,15 @@
 application  = 'ontologies_api'
 app_path = "/srv/ncbo/#{application}"
-working_directory "#{app_path}/current/"
+working_directory "#{app_path}"
 
 worker_processes 8
 timeout 300
 preload_app true
-user "ncbobp", "ncbobp"
+user "root", "root"
 
 #stderr_path "log/unicorn.stderr.log"
 #stdout_path "log/unicorn.stdout.log"
-pid "/var/run/unicorn/unicorn.pid"
+pid "/var/run/unicorn.pid"
 
 # Listen on both fast-failing unix data socket (for nginx) & a backloggable TCP connection
 listen "/tmp/unicorn.sock", :backlog => 1024
@@ -17,7 +17,7 @@ listen 8088, :backlog => 256
 
 # Make sure unicorn is using current gems after rolling restarts
 before_exec do |server|
-   ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
+   ENV['BUNDLE_GEMFILE'] = "#{app_path}/Gemfile"
 end
 
 before_fork do |server, worker|

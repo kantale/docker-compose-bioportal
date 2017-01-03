@@ -1,0 +1,4 @@
+#!/bin/bash
+/usr/sbin/nginx &
+/srv/ncbo/unicorn &
+/srv/ncbo/ncbo_cron_init

@@ -4,8 +4,6 @@ EXPOSE 8080:80
 RUN mkdir /srv/ncbo/
 
 RUN apt-get update
-RUN apt-get -y install nginx-full supervisor
-COPY nginx.conf /etc/nginx.conf
 
 RUN cd /srv/ncbo && git clone https://github.com/sifrproject/ontologies_api.git && git clone https://github.com/sifrproject/ncbo_cron.git
 
@@ -17,19 +15,21 @@ RUN gem install rails
 
 COPY ncbo_cron_init /srv/ncbo/
 
+RUN apt-get -y install nginx-full
+
 # Copy config files
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY config_cron.rb /srv/ncbo/ncbo_cron/config/config.rb
 COPY config_api.rb /srv/ncbo/ontologies_api/config/environments/production.rb
 COPY unicorn.rb /srv/ncbo/ontologies_api/config/unicorn.rb
-
+COPY french_stop_words.txt /srv/ncbo/ncbo_cron/config/french_stop_words.txt
+COPY english_stop_words.txt /srv/ncbo/ncbo_cron/config/english_stop_words.txt
 COPY unicorn /srv/ncbo/
+COPY run_all /srv/ncbo/
 
 
 WORKDIR /srv/ncbo/
 
-VOLUME ["/srv"]
-
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
 # Define default command.
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD ["/srv/ncbo/run_all"]
+

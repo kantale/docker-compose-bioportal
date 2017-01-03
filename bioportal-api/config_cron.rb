@@ -121,7 +121,8 @@ begin
   NcboCron.config do |config|
     config.redis_host                = Annotator.settings.annotator_redis_host
     config.redis_port                = Annotator.settings.annotator_redis_port
-    
+    config.daemonize                 = false
+    config.user                      = root
     # Schedules: run every 4 hours, starting at 00:30
     config.cron_schedule							= "30 */4 * * *"
     # Pull schedule: run daily at 6 a.m. (18:00)
