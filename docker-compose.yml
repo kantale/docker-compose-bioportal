@@ -30,6 +30,6 @@ services:
     build: ./bioportal-api/
     container_name: bioportal-api
     volumes:
-      - /srv/ncbo:/srv/ncbo
+        - /srv/ncbo/repository:/srv/ncbo/repository
     ports:
       - "8080:8080"
