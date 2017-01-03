@@ -8,7 +8,7 @@ lockfile=/var/run/unicorn/unicorn.lock
 pidfile=/var/run/unicorn/unicorn.pid
 SLEEPMSEC=100000
 RETVAL=0
-BUNDLE_PATH=/usr/local/rbenv/shims/
+BUNDLE_PATH=/usr/local/bin/
 
 cd $APP_ROOT && $BUNDLE_PATH/bundle exec unicorn -c $UNICORN_CONF -E $ENVIRONMENT -D
 
