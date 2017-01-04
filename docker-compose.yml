@@ -4,9 +4,10 @@ services:
     image: vemonet/bioportal-4store
     ports: 
       - "9000:9000"
-  mgrep:
-    image: vemonet/bioportal-mgrep
-    ports: 
+  bioportal-mgrep:
+      build: ./bioportal-mgrep
+      container_name: bioportal-mgrep
+      ports: 
       - "55555:55555"
     volumes:
       - /srv/mgrep/mgrep-55555/:/opt/mgrep/dictionary
