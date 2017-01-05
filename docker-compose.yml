@@ -38,3 +38,8 @@ services:
         - ./data/bioportal:/srv/bioportal/
     ports:
       - "8080:8080"
+  bioportal-annotator-proxy:
+      build: ./bioportal-annotator-proxy/
+      container_name: bioportal-annotator-proxy
+      ports:
+          - "8081:8081"
