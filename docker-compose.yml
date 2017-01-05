@@ -1,18 +1,22 @@
 version: '2'
 services:
-  4store:
-    image: vemonet/bioportal-4store
+  bioportal-4store:
+    build: ./bioportal-4store
+    container_name: bioportal-4store
     ports: 
       - "9000:9000"
+    volumes: 
+      - ./data/4store/:/var/lib/4store
   bioportal-mgrep:
-      build: ./bioportal-mgrep
-      container_name: bioportal-mgrep
-      ports: 
+    build: ./bioportal-mgrep
+    container_name: bioportal-mgrep
+    ports: 
       - "55555:55555"
     volumes:
-      - /srv/mgrep/mgrep-55555/:/opt/mgrep/dictionary
-  solr:
-    image: vemonet/bioportal-solr
+      - ./data/mgrep/:/opt/mgrep/dictionary
+  bioportal-solr:
+    build: ./bioportal-solr
+    container_name: bioportal-solr
     ports: 
       - "8983:8983"
   redis_annotator:
@@ -31,6 +35,6 @@ services:
     build: ./bioportal-api/
     container_name: bioportal-api
     volumes:
-        - /srv/bioportal/:/srv/bioportal/
+        - ./data/bioportal:/srv/bioportal/
     ports:
       - "8080:8080"
