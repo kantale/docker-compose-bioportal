@@ -39,6 +39,7 @@ services:
         - ./data/ncbo/ncbo_cron/logs:/srv/ncbo/ncbo_cron/logs/
     ports:
       - "8080:8080"
+      - "9393:9393"
     depends_on:
       - redis-http
       - redis-goo
