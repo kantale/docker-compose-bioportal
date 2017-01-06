@@ -17,16 +17,16 @@ $SITE_URL = "localhost"
 begin
   LinkedData.config do |config|
     config.repository_folder  = "/srv/bioportal/repository"
-    config.goo_host           = "localhost"
+    config.goo_host           = "bioportal-4store"
     config.goo_port           = 9000
-    config.search_server_url  = "http://localhost:8083/solr/core1"
+    config.search_server_url  = "http://bioportal-solr:8083/solr/core1"
     config.rest_url_prefix   = "http://localhost:9393/"
     config.enable_security   = false
     config.id_url_prefix      = "http://data.bioontology.org/"
     config.enable_security    = false # set on false for CRON
     config.apikey             = "24e0e77e-54e0-11e0-9d7b-005056aa3316"
     config.ui_host            = "#{$SITE_URL}"
-    config.sparql_endpoint_url = "http://sparql.#{$SITE_URL}/test"
+    config.sparql_endpoint_url = "http://bioportal-4store:9000/test"
     config.enable_monitoring  = false
     config.cube_host          = "localhost"
     config.enable_slices      = true
@@ -40,11 +40,11 @@ begin
                                  "agroportal" => {"api" => "http://data.agroportal.lirmm.fr", "ui" => "http://agroportal.lirmm.fr", "apikey" => "1cfae05f-9e67-486f-820b-b393dec5764b"}}
 
     # Caches
-    config.http_redis_host    = "localhost"
-    config.http_redis_port    = 6380
+    config.http_redis_host    = "redis-http"
+    config.http_redis_port    = 6379
     config.enable_http_cache  = true
-    config.goo_redis_host     = "localhost"
-    config.goo_redis_port     = 6381
+    config.goo_redis_host     = "redis-goo"
+    config.goo_redis_port     = 6379
 
     Goo.use_cache             = true
 
@@ -61,7 +61,7 @@ begin
     config.admin_emails           = ["jonquet@lirmm.fr", "vincent.emonet@lirmm.fr"]
 
     # PURL server config parameters
-    config.enable_purl            = false
+    config.enable_purl            = true
     config.purl_host              = "localhost"
     config.purl_port              = 80
     config.purl_username          = "admin"
@@ -71,7 +71,7 @@ begin
 
     # Ontology Google Analytics Redis
     # disabled
-    config.ontology_analytics_redis_host = "localhost"
+    config.ontology_analytics_redis_host = "redis-http"
     config.enable_ontology_analytics = false
     config.ontology_analytics_redis_port = 6379
 end
@@ -83,11 +83,11 @@ begin
   Annotator.config do |config|
     config.mgrep_dictionary_file   = "/srv/mgrep/dictionary/dictionary.txt"
     config.stop_words_default_file = "/srv/ncbo/ncbo_cron/config/french_stop_words.txt"
-    config.mgrep_host              = "localhost"
+    config.mgrep_host              = "bioportal-mgrep"
     config.mgrep_port              = 55555
-    config.mgrep_alt_host          = "localhost"
+    config.mgrep_alt_host          = "bioportal-mgrep"
     config.mgrep_alt_port          = 55555
-    config.annotator_redis_host    = "localhost"
+    config.annotator_redis_host    = "redis-annotator"
     config.annotator_redis_port    = 6379
     config.annotator_redis_prefix  = "c1:"
     config.annotator_redis_alt_prefix  = "c2:"
@@ -106,55 +106,13 @@ end
 begin
   LinkedData::OntologiesAPI.config do |config|
     config.cube_host                   = "localhost"
-    config.http_redis_host             = "localhost"
+    config.http_redis_host             = "redis-http"
     config.http_redis_port             = 6379
-    config.ontology_rank
-    config.resolver_redis_host = "localhost"
+    config.resolver_redis_host = "redis-http"
     config.resolver_redis_port = 6379
     config.restrict_download = []
 end
-rescue NameError
-	  puts "(CNFG) >> OntologiesAPI not available, cannot load config"
-end
-
-begin
-  NcboCron.config do |config|
-    config.redis_host                = Annotator.settings.annotator_redis_host
-    config.redis_port                = Annotator.settings.annotator_redis_port
-    config.daemonize                 = false
-    config.user                      = root
-    # Schedules: run every 4 hours, starting at 00:30
-    config.cron_schedule							= "30 */4 * * *"
-    # Pull schedule: run daily at 6 a.m. (18:00)
-    config.pull_schedule							= "00 18 * * *"
-    # Delete class graphs of archive submissions: run twice per week on tuesday and friday at 10 a.m. (22:00)
-    config.cron_flush								= "00 22 * * 2,5"
-    # Remove graphs from deleted ontologies when flushing class graphs
-    config.remove_zombie_graphs                     = true
-    # Warmup long time running queries: run every 3 hours (beginning at 00:00)
-    config.cron_warmq								= "00 */3 * * *"
-    # Create mapping counts schedule: run twice per week on Wednesday and Saturday at 12:30AM
-    config.cron_mapping_counts						= "30 0 * * 3,6"
-    
-    config.enable_ontologies_report  = true
-    # Ontologies report generation schedule: run daily at 1:30 a.m.
-    config.cron_ontologies_report					= "30 1 * * *"
-    # Ontologies Report file location
-    config.ontology_report_path 					= "/srv/ncbo/reports/ontologies_report.json"
-    
-	# Ontology analytics refresh schedule: run daily at 4:30 a.m.
-    config.cron_ontology_analytics ||= "30 4 * * *"
-    config.enable_ontology_analytics = true
-    config.analytics_service_account_email_address 	= "account-1@bioportal-1131.iam.gserviceaccount.com"
-    config.analytics_path_to_key_file              	= "/srv/bioportal-f52e2cbedc59.p12" # you have to get this file from Google
-    config.analytics_profile_id                    	= "ga:111836024" # replace with your ga view id
-    config.analytics_app_name                      	= "bioportal"
-    config.analytics_app_version                   	= "1.0.0"
-    config.analytics_start_date                    	= "2015-11-16"
-    config.analytics_filter_str                    	= ""
-  end
-rescue NameError
-  #binding.pry
-  puts "(CNFG) >> NcboCron not available, cannot load config"
+#rescue NameError
+#	  puts "(CNFG) >> OntologiesAPI not available, cannot load config"
 end
 

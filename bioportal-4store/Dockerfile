@@ -36,6 +36,8 @@ VOLUME /srv/4store/data
 
 COPY run-4store /usr/bin/
 
+EXPOSE 9000
+
 # Define default command.
 CMD ["/usr/bin/run-4store"]
 

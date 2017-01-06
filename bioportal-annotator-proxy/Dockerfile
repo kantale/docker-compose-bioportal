@@ -12,7 +12,8 @@ cd annotators &&\
 git checkout issues_14_16  &&\
 mvn validate && mvn clean install && \
 cd sifr-bioportal-annotator-proxy && \
-./build_for_docker.sh
+echo "annotatorURI=http://bioportal-api:8080/annotator?" > src/main/resources/annotatorProxy.properties && \
+mvn clean install
 
 WORKDIR /annotators/sifr-bioportal-annotator-proxy
 

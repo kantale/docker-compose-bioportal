@@ -11,35 +11,54 @@ services:
     build: ./bioportal-mgrep
     container_name: bioportal-mgrep
     ports: 
-      - "55555:55555"
+      - "55555"
     volumes:
       - ./data/mgrep/:/opt/mgrep/dictionary
   bioportal-solr:
     build: ./bioportal-solr
     container_name: bioportal-solr
     ports: 
-      - "8983:8983"
-  redis_annotator:
+      - "8983"
+  redis-annotator:
     image: redis:3.0.7-alpine
     ports: 
-      - "6379:6379"
-  redis_http:
+      - "6379"
+  redis-http:
     image: redis:3.0.7-alpine
     ports: 
-      - "6380:6379"
-  redis_goo:
+      - "6379"
+  redis-goo:
     image: redis:3.0.7-alpine
     ports: 
-      - "6381:6379"
+      - "6379"
   bioportal-api:
     build: ./bioportal-api/
     container_name: bioportal-api
     volumes:
         - ./data/bioportal:/srv/bioportal/
+        - ./data/ncbo/ncbo_cron/logs:/srv/ncbo/ncbo_cron/logs/
     ports:
       - "8080:8080"
+    depends_on:
+      - redis-http
+      - redis-goo
+      - redis-annotator
+      - bioportal-mgrep
+      - bioportal-solr
+      - bioportal-4store
+    links:
+       - redis-http
+       - redis-goo
+       - redis-annotator
+       - bioportal-mgrep
+       - bioportal-solr
+       - bioportal-4store
   bioportal-annotator-proxy:
       build: ./bioportal-annotator-proxy/
       container_name: bioportal-annotator-proxy
       ports:
           - "8081:8081"
+      depends_on:
+          - bioportal-api
+      links:
+          - bioportal-api
