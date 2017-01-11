@@ -1,5 +1,5 @@
 FROM ruby:2.2.5
-EXPOSE 8080:80
+EXPOSE 8080
 
 RUN mkdir /srv/ncbo/
 
@@ -13,7 +13,7 @@ RUN gem install rails
 
 COPY ncbo_cron_init /srv/ncbo/
 
-RUN apt-get update && apt-get -y install nginx-full  
+RUN apt-get update && apt-get -y install nginx-full openjdk-7-jre-headless raptor2-utils
 
 # Copy config files
 COPY nginx.conf /etc/nginx/nginx.conf
@@ -25,7 +25,8 @@ COPY french_stop_words.txt /srv/ncbo/ncbo_cron/config/french_stop_words.txt
 COPY english_stop_words.txt /srv/ncbo/ncbo_cron/config/english_stop_words.txt
 COPY unicorn /srv/ncbo/
 COPY run_all /srv/ncbo/
-
+COPY admin_user_init /srv/ncbo/
+COPY user_config_script /srv/ncbo
 
 WORKDIR /srv/ncbo/
 

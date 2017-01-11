@@ -21,7 +21,7 @@ begin
     config.goo_port           = 9000
     config.search_server_url  = "http://bioportal-solr:8083/solr/core1"
     config.rest_url_prefix   = "http://localhost:9393/"
-    config.enable_security   = false
+    config.enable_security   = true
     config.id_url_prefix      = "http://data.bioontology.org/"
     config.enable_security    = false # set on false for CRON
     config.apikey             = "24e0e77e-54e0-11e0-9d7b-005056aa3316"
@@ -61,7 +61,7 @@ begin
     config.admin_emails           = ["jonquet@lirmm.fr", "vincent.emonet@lirmm.fr"]
 
     # PURL server config parameters
-    config.enable_purl            = true
+    config.enable_purl            = false
     config.purl_host              = "localhost"
     config.purl_port              = 80
     config.purl_username          = "admin"
@@ -71,7 +71,7 @@ begin
 
     # Ontology Google Analytics Redis
     # disabled
-    config.ontology_analytics_redis_host = "redis-http"
+    config.ontology_analytics_redis_host = "redis-annotator"
     config.enable_ontology_analytics = false
     config.ontology_analytics_redis_port = 6379
 end
@@ -103,9 +103,33 @@ rescue NameError
   puts "(CNFG) >> OntologyRecommender not available, cannot load config"
 end
 
+NcboCron.config do |config|
+  config.redis_host  = "redis-annotator"
+  config.redis_port  = 6379
+  config.search_index_all_url = "http://bioportal-solr:8983/solr/core2"
+
+  # Ontologies Report config
+  config.ontology_report_path = "./srv/bioportal/reports/ontologies_report.json"
+
+  # Google Analytics config
+  config.analytics_service_account_email_address = "123456789999-sikipho0wk8q0atflrmw62dj4kpwoj3c@developer.gserviceaccount.com"
+  config.analytics_path_to_key_file              = "config/bioportal-analytics.p12"
+  config.analytics_profile_id                    = "ga:1234567"
+  config.analytics_app_name                      = "BioPortal"
+  config.analytics_app_version                   = "1.0.0"
+  config.analytics_start_date                    = "2013-10-01"
+  config.analytics_filter_str                    = "ga:networkLocation!@stanford;ga:networkLocation!@amazon"
+
+  # this is a Base64.encode64 encoded personal access token
+  # you need to run Base64.decode64 on it before using it in your code
+  # this is a workaround because Github does not allow storing access tokens in a repo
+  config.git_repo_access_token = "YOUR GITHUB REPO PERSONAL ACCESS TOKEN, encoded using Base64"
+end
+
+
 begin
   LinkedData::OntologiesAPI.config do |config|
-    config.cube_host                   = "localhost"
+    config.cube_host                   = "redis-http"
     config.http_redis_host             = "redis-http"
     config.http_redis_port             = 6379
     config.resolver_redis_host = "redis-http"

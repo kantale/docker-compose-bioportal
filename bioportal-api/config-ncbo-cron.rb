@@ -1,147 +1,59 @@
-#local IP address lookup. This hack doesn't make connection to external hosts
-require 'socket'
-  def local_ip
-    orig, Socket.do_not_reverse_lookup = Socket.do_not_reverse_lookup, true  # turn off reverse DNS resolution temporarily
+LinkedData.config do |config|
+  config.enable_monitoring = false
+  config.cube_host = "redis-http"
+  config.goo_host = "bioportal-4store"
+  config.goo_port = 9000
+  config.search_server_url = "http://bioportal-solr:8983/solr/core1"
+  config.repository_folder = "/srv/bioportal/repository/"
+  config.http_redis_host = "redis-http"
+  config.http_redis_port = 6379
+  config.goo_redis_host = "redis-goo"
+  config.goo_redis_port = 6379
+  config.enable_security = false
+  #config.redis_host = "redis-http"
+  #config.redis_port=6379
 
-    UDPSocket.open do |s|
-      s.connect '8.8.8.8', 1 #google
-      s.addr.last
-    end
-  ensure
-    Socket.do_not_reverse_lookup = orig
-  end
-
-$LOCAL_IP = local_ip
-$SITE_URL = "localhost"
-
-begin
-  LinkedData.config do |config|
-    config.repository_folder  = "/srv/bioportal/repository"
-    config.goo_host           = "bioportal-4store"
-    config.goo_port           = 9000
-    config.search_server_url  = "http://bioportal-solr:8083/solr/core1"
-    config.rest_url_prefix   = "http://localhost:9393/"
-    config.enable_security   = false
-    config.id_url_prefix      = "http://data.bioontology.org/"
-    config.enable_security    = false # set on false for CRON
-    config.apikey             = "24e0e77e-54e0-11e0-9d7b-005056aa3316"
-    config.ui_host            = "#{$SITE_URL}"
-    config.sparql_endpoint_url = "http://bioportal-4store:9000/test"
-    config.enable_monitoring  = false
-    config.cube_host          = "localhost"
-    config.enable_slices      = true
-    config.enable_resource_index  = false
-
-    # Used to define other bioportal that can be mapped to
-    # Example to map to ncbo bioportal : {"ncbo" => {"api" => "http://data.bioontology.org", "ui" => "http://bioportal.bioontology.org", "apikey" => ""}
-    # Then create the mapping using the following class in JSON : "http://purl.bioontology.org/ontology/MESH/C585345": "ncbo:MESH"
-    # Where "ncbo" is the namespace used as key in the interportal_hash
-    config.interportal_hash   = {"ncbo" => {"api" => "http://data.bioontology.org", "ui" => "http://bioportal.bioontology.org", "apikey" => "4a5011ea-75fa-4be6-8e89-f45c8c84844e"},
-                                 "agroportal" => {"api" => "http://data.agroportal.lirmm.fr", "ui" => "http://agroportal.lirmm.fr", "apikey" => "1cfae05f-9e67-486f-820b-b393dec5764b"}}
-
-    # Caches
-    config.http_redis_host    = "redis-http"
-    config.http_redis_port    = 6379
-    config.enable_http_cache  = true
-    config.goo_redis_host     = "redis-goo"
-    config.goo_redis_port     = 6379
-
-    Goo.use_cache             = true
-
-    # Email notifications
-    config.enable_notifications   = true
-    config.email_sender           = "notifications@bioportal.lirmm.fr" # Default sender for emails
-    config.email_override         = "override@example.org" # all email gets sent here. Disable with email_override_disable.
-    config.email_disable_override = true
-    config.smtp_host              = "smtp.lirmm.fr"
-    config.smtp_port              = 25
-    config.smtp_auth_type         = :none # :none, :plain, :login, :cram_md5
-    config.smtp_domain            = "lirmm.fr"
-    # Emails of the instance administrators to get mail notifications when new user or new ontology
-    config.admin_emails           = ["jonquet@lirmm.fr", "vincent.emonet@lirmm.fr"]
-
-    # PURL server config parameters
-    config.enable_purl            = true
-    config.purl_host              = "localhost"
-    config.purl_port              = 80
-    config.purl_username          = "admin"
-    config.purl_password          = "password"
-    config.purl_maintainers       = "admin"
-    config.purl_target_url_prefix = "localhost"
-
-    # Ontology Google Analytics Redis
-    # disabled
-    config.ontology_analytics_redis_host = "redis-http"
-    config.enable_ontology_analytics = false
-    config.ontology_analytics_redis_port = 6379
-end
-rescue NameError
-  puts "(CNFG) >> LinkedData not available, cannot load config"
+  # Email notifications.
+  config.enable_notifications    = true
+  config.email_sender            = "sender@domain.com" # Default sender for emails
+  config.email_override          = "test@domain.com" # By default, all email gets sent here.  Disable with email_override_disable.
+  config.smtp_host               = "smtp-unencrypted.stanford.edu"
+  config.smtp_user               = nil
+  config.smtp_password           = nil
+  config.smtp_auth_type          = :none
+  config.smtp_domain             = "localhost.localhost"  
 end
 
-begin
-  Annotator.config do |config|
-    config.mgrep_dictionary_file   = "/srv/mgrep/dictionary/dictionary.txt"
-    config.stop_words_default_file = "/srv/ncbo/ncbo_cron/config/french_stop_words.txt"
-    config.mgrep_host              = "bioportal-mgrep"
-    config.mgrep_port              = 55555
-    config.mgrep_alt_host          = "bioportal-mgrep"
-    config.mgrep_alt_port          = 55555
-    config.annotator_redis_host    = "redis-annotator"
-    config.annotator_redis_port    = 6379
-    config.annotator_redis_prefix  = "c1:"
-    config.annotator_redis_alt_prefix  = "c2:"
-end
-rescue NameError
-  puts "(CNFG) >> Annotator not available, cannot load config"
+Annotator.config do |config|
+  config.mgrep_dictionary_file   = "./srv/mgrep/dictionary/dictionary.txt"
+  config.stop_words_default_file = "./config/french_stop_words.txt"
+  config.mgrep_host              = "bioportal-mgrep"
+  config.mgrep_port              = 55555
+  config.annotator_redis_host  = "redis-annotator"
+  config.annotator_redis_port  = 6379
 end
 
-begin
-  OntologyRecommender.config do |config|
-end
-rescue NameError
-  puts "(CNFG) >> OntologyRecommender not available, cannot load config"
-end
+NcboCron.config do |config|
+  config.redis_host  = "redis-annotator"
+  config.redis_port  = 6379
+  config.search_index_all_url = "http://bioportal-solr:8983/solr/core2"
 
+  # Ontologies Report config
+  config.ontology_report_path = "./srv/bioportal/reports/ontologies_report.json"
 
-begin
-  NcboCron.config do |config|
-    config.redis_host                = "redis-http"
-    config.redis_port                = 6379
-    config.daemonize                 = false
-    config.user                      = "root"
-    # Schedules: run every 4 hours, starting at 00:30
-    config.cron_schedule							= "30 */4 * * *"
-    # Pull schedule: run daily at 6 a.m. (18:00)
-    config.pull_schedule							= "00 18 * * *"
-    # Delete class graphs of archive submissions: run twice per week on tuesday and friday at 10 a.m. (22:00)
-    config.cron_flush								= "00 22 * * 2,5"
-    # Remove graphs from deleted ontologies when flushing class graphs
-    config.remove_zombie_graphs                     = true
-    # Warmup long time running queries: run every 3 hours (beginning at 00:00)
-    config.cron_warmq								= "00 */3 * * *"
-    # Create mapping counts schedule: run twice per week on Wednesday and Saturday at 12:30AM
-    config.cron_mapping_counts						= "30 0 * * 3,6"
-    
-    config.enable_ontologies_report  = true
-    # Ontologies report generation schedule: run daily at 1:30 a.m.
-    config.cron_ontologies_report					= "30 1 * * *"
-    # Ontologies Report file location
-    config.ontology_report_path 					= "/srv/ncbo/reports/ontologies_report.json"
-    
-	# Ontology analytics refresh schedule: run daily at 4:30 a.m.
-    config.cron_ontology_analytics ||= "30 4 * * *"
-    config.enable_ontology_analytics = true
-    config.analytics_service_account_email_address 	= "account-1@bioportal-1131.iam.gserviceaccount.com"
-    config.analytics_path_to_key_file              	= "/srv/bioportal-f52e2cbedc59.p12" # you have to get this file from Google
-    config.analytics_profile_id                    	= "ga:111836024" # replace with your ga view id
-    config.analytics_app_name                      	= "bioportal"
-    config.analytics_app_version                   	= "1.0.0"
-    config.analytics_start_date                    	= "2015-11-16"
-    config.analytics_filter_str                    	= ""
-  end
-#rescue NameError
-  #binding.pry
-  #puts "(CNFG) >> NcboCron not available, cannot load config"
+  # Google Analytics config
+  config.analytics_service_account_email_address = "123456789999-sikipho0wk8q0atflrmw62dj4kpwoj3c@developer.gserviceaccount.com"
+  config.analytics_path_to_key_file              = "config/bioportal-analytics.p12"
+  config.analytics_profile_id                    = "ga:1234567"
+  config.analytics_app_name                      = "BioPortal"
+  config.analytics_app_version                   = "1.0.0"
+  config.analytics_start_date                    = "2013-10-01"
+  config.analytics_filter_str                    = "ga:networkLocation!@stanford;ga:networkLocation!@amazon"
+
+  # this is a Base64.encode64 encoded personal access token
+  # you need to run Base64.decode64 on it before using it in your code
+  # this is a workaround because Github does not allow storing access tokens in a repo
+  config.git_repo_access_token = "YOUR GITHUB REPO PERSONAL ACCESS TOKEN, encoded using Base64"
 end
 
+Goo.use_cache = true
