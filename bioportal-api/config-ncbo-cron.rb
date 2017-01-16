@@ -25,7 +25,7 @@ LinkedData.config do |config|
 end
 
 Annotator.config do |config|
-  config.mgrep_dictionary_file   = "./srv/mgrep/dictionary/dictionary.txt"
+  config.mgrep_dictionary_file   = "/srv/mgrep/dictionary/dictionary.txt"
   config.stop_words_default_file = "./config/french_stop_words.txt"
   config.mgrep_host              = "bioportal-mgrep"
   config.mgrep_port              = 55555
@@ -39,7 +39,7 @@ NcboCron.config do |config|
   config.search_index_all_url = "http://bioportal-solr:8983/solr/core2"
 
   # Ontologies Report config
-  config.ontology_report_path = "./srv/bioportal/reports/ontologies_report.json"
+  config.ontology_report_path = "/srv/bioportal/reports/ontologies_report.json"
 
   # Google Analytics config
   config.analytics_service_account_email_address = "123456789999-sikipho0wk8q0atflrmw62dj4kpwoj3c@developer.gserviceaccount.com"

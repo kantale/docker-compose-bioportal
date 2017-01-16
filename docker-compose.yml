@@ -37,6 +37,7 @@ services:
     volumes:
         - ./data/bioportal:/srv/bioportal/
         - ./data/ncbo/ncbo_cron/logs:/srv/ncbo/ncbo_cron/logs/
+        - ./data/mgrep/:/srv/mgrep/dictionary
     ports:
       - "8080:8080"
       - "2222:22"
