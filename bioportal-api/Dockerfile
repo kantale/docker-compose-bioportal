@@ -3,13 +3,16 @@ EXPOSE 8080
 
 RUN mkdir /srv/ncbo/
 
-RUN cd /srv/ncbo && git clone https://github.com/sifrproject/ontologies_api.git && git clone https://github.com/sifrproject/ncbo_cron.git
+RUN apt-get update && apt-get install -y openssh-server
 
-RUN cd /srv/ncbo/ontologies_api/ && bundle install
+RUN cd /srv/ncbo && \
+git clone https://github.com/sifrproject/ontologies_api.git && \
+git clone https://github.com/sifrproject/ncbo_cron.git && \
+cd /srv/ncbo/ontologies_api/ && bundle install && \
+cd /srv/ncbo/ncbo_cron/ && bundle install && \
+service ssh start
 
-RUN cd /srv/ncbo/ncbo_cron/ && bundle install 
-
-RUN gem install rails
+#RUN gem install rails
 
 COPY ncbo_cron_init /srv/ncbo/
 
@@ -25,8 +28,9 @@ COPY french_stop_words.txt /srv/ncbo/ncbo_cron/config/french_stop_words.txt
 COPY english_stop_words.txt /srv/ncbo/ncbo_cron/config/english_stop_words.txt
 COPY unicorn /srv/ncbo/
 COPY run_all /srv/ncbo/
-COPY admin_user_init /srv/ncbo/
-COPY user_config_script /srv/ncbo
+
+RUN mkdir /root/.ssh/
+COPY authorized_keys /root/.ssh/
 
 WORKDIR /srv/ncbo/
 
