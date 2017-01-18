@@ -1,32 +1,69 @@
 
-# A docker compose for BioPortal
+# A docker compose for BioPortal API and the Annotator Proxy
 
-## Add the dictionary.txt
+## Services provided
+This docker compose launches all the services necessary to run ontologies-api and ncbo_cron:
+  - redis-goo, redis-annotator, redis-http
+  - solr
+  - mgrep (accessible on local host port 55555)
+  - 4store (accessible on local host post 9000)
+  - bioportal-api (runs nginx/ontologies-api/ncbo_cron/sshd, ontologies_api accessible on the host through port 8080, sshd is accessible on the host port 2222 and is used by the administration scripts provided) 
+  - bioportal-annotator-proxy (accessible on the host machine on port 8081)
 
-The mgrep container is using the dictionary from your machine at `/srv/mgrep/mgrep-55555/dictionary.txt` (see volumes in docker-compose.yml)
+The docker files of each of the services above confingures them properly to all run together and bind all the persistant data in the `data/`.
 
-You need to copy the dictionary.txt from this git repository to the path where it will be used on your machine (here /srv/mgrep/mgrep-55555/dictionary.txt if you don't change the YML)
+##Deplyment and initial set-up
 
-## Run the containers
+The first step in deploying this docker compose is to clone this repository:
+```
+  git clone 
+```
 
-`docker-compose up -d`
+Subsequently, administration scripts are provided so set-up the environment, start the services and populate the triple store, caches and dictionary with ontologies. They are numbered in the order in which they should be run the first time you set-up.
+### 0_purge_data_optional.sh (Optional)
+ Erases all the persistant data in order to reset everything. This step is unnecessary when you fist setup the docker compose.
 
-## Stop the containers
+### 1_prepare_data.sh
 
-`docker-compose down`
+This script allows you to retrieve all the ontologies you need from NCBO bioportal (English) or LIRMM (French) for the ontologies with no licence restrictions. 
+
+The script takes three arguments:
+  - The first argument is the portal from which to fetch the ontologies (lirmm or ncbo).
+  - The second argument is your api-key from the selected portal (you must create an account for free on the portal to obtain the api-key). 
+  - The last argument is the list of ontology acronyms to retrieve from the selected portal (you may find the list of ontologies on the portal). 
+
+If the process is interrupted, you can run the script again, it will not redownload ontologies that were already downloaded before. The ontologies downloaded are saved in the `data/bioportal/repository/` directory, if you mistakingly included an ontology you do not need, you may delete it directly from this directory. 
+
+Alternatively, instead of running this script you may manually put the ontologies in the `data/bioportal/repository/` directory if you already have them with the name ACRONYM.ttl, where ACRONYM is the actony of each ontology.
+ 
+### 2_build_containers.sh 
+This script will check if you have and ssh key, generate one if need be and add it to the authorized keys for the bioportal-api container. Subsequently, it will run `docker-compose build` to build all the containers prior to running them.
+
+### 3_start_containers.sh
+This script will run `docker-compose up -d --force-recreate` to start all the containers and services. This is required before being able to populate the databases. 
+
+### 4_populate.sh 
+This script will populate the different services with the ontologies in `data/bioportal/repository`. This step is very time and ressource consuming. Although it does not block, it sets off the full parsing, loading, indexing, caching and dictionary generation in the background. This process may take several hours to complete depending on the number and size of the ontologies selected. You may want to monitor the CPU activity of the dockerd process to determine when the population process is over.  
+
+### Day to day operations
+Once the appliance is populated, you can directly use `docker-compose up -d --force-recreate` to start the services and docker-compose down to stop the services. 
+
+If you subsequently add ontologies in `data/bioportal/repository`, they will automatically be indexed in time by ncbo_cron process in the bioportal-api container.  
 
 
-## Using
+## Requerements and dependencies on the host machine
 
-Docker version 1.11.2
+Use the latest version of Docker on a linux host with an up to date kernel (prefarably the latest stable release of the upstream branch). 
 
-* 4store (vemonet/bioportal-4store)
-* mgrep (vemonet/bioportal-mgrep)
-* solr (vemonet/bioportal-solr)
-* redis (redis:3.0.7-alpine)
+Warning: The native version of docker for MacOS contains active bugs that cause the docker deamon to hang-up during the indexation process. If you wish to use this docker-compose on a MacOS host, you may want to use docker-toolkit and docker-machine to create a virtualized docker environemnt. Alternatively you may install docker in a virtual machine and deploy docker compose inside the virtual machine. The same may be true on a windows machine. 
 
-## Sample config file
+### Utilities required for the deployment process
+The depolyment and set-up process requires a number of basic utilities to run:
+  - curl 
+  - wget
+  - jq (a json parser) 
 
-A sample config file for ontologies_api and ncbo_cron is also available in `config.rb.sample`
 
-It is using the `/srv/bioportal` directory to store ontologies and other data linked to the app (feel free to change it)
+curl is required by `1_prepare_data.sh` and `4_populate.sh`.
+
+wget and jq are only required for `1_prepare_data`. 
