@@ -23,21 +23,27 @@ services:
     image: redis:3.0.7-alpine
     ports: 
       - "6379"
+    volumes:
+      - ./data/redis/annotator/:/data
   redis-http:
     image: redis:3.0.7-alpine
     ports: 
       - "6379"
+    volumes:
+      - ./data/redis/http/:/data
   redis-goo:
     image: redis:3.0.7-alpine
     ports: 
       - "6379"
+    volumes:
+      - ./data/redis/goo:/data
   bioportal-api:
     build: ./bioportal-api/
     container_name: bioportal-api
     volumes:
-        - ./data/bioportal:/srv/bioportal/
-        - ./data/ncbo/ncbo_cron/logs:/srv/ncbo/ncbo_cron/logs/
-        - ./data/mgrep/:/srv/mgrep/dictionary
+      - ./data/bioportal:/srv/bioportal/
+      - ./data/ncbo/ncbo_cron/logs:/srv/ncbo/ncbo_cron/logs/
+      - ./data/mgrep/:/srv/mgrep/dictionary
     ports:
       - "8080:8080"
       - "2222:22"
@@ -49,18 +55,18 @@ services:
       - bioportal-solr
       - bioportal-4store
     links:
-       - redis-http
-       - redis-goo
-       - redis-annotator
-       - bioportal-mgrep
-       - bioportal-solr
-       - bioportal-4store
+      - redis-http
+      - redis-goo
+      - redis-annotator
+      - bioportal-mgrep
+      - bioportal-solr
+      - bioportal-4store
   bioportal-annotator-proxy:
-      build: ./bioportal-annotator-proxy/
-      container_name: bioportal-annotator-proxy
-      ports:
-          - "8081:8081"
-      depends_on:
-          - bioportal-api
-      links:
-          - bioportal-api
+    build: ./bioportal-annotator-proxy/
+    container_name: bioportal-annotator-proxy
+    ports:
+      - "8081:8081"
+    depends_on:
+      - bioportal-api
+    links:
+      - bioportal-api

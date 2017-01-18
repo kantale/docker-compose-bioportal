@@ -16,10 +16,9 @@ RUN apt-get update && \
 
 
 RUN mkdir -p /opt/solr
-# Install 4store
+# Install solr
 RUN \
   cd /opt/solr && \
-  git clone https://github.com/vemonet/bioportal-solr.git solr && \
   wget http://archive.apache.org/dist/lucene/solr/4.10.4/solr-4.10.4.tgz && \
   tar -xzf solr-4.10.4.tgz && \
   cp -r /opt/solr/solr-4.10.4/example/* /opt/solr/ && \

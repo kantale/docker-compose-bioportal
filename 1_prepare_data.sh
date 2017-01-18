@@ -12,7 +12,7 @@ fi
 
 PORTAL=$1
 APIKEY=$2
-ONTOLOGIES=$3
+ONTOLOGIES=$(echo $3 | sed "s/,/ /g")
 
 if [ "$PORTAL" != "lirmm" ] && [ "$PORTAL" != "ncbo" ]; then
 	syntax
@@ -26,23 +26,22 @@ elif [ "$PORTAL" == "ncbo" ]; then
 	URL="http://data.bioontology.org"
 fi
 
-for ACRONYM in $(echo $ONTOLOGIES | sed "s/,/ /g")
+for ACRONYM in $ONTOLOGIES
 do
 	echo "Processing $ACRONYM"
 	SUBURL="$URL/ontologies/$ACRONYM/submissions?apikey=$APIKEY"
 	NUMSUB=`curl $SUBURL 2> /dev/null | jq "length"`
-	echo "Found $NUMSUB submissions..."
+	echo -e "\tFound $NUMSUB submissions, retrieving latest..."
 	if [ "$NUMSUB" -ne "0" ]; then
 		DOWNLOADURL="$URL/ontologies/$ACRONYM/submissions/$NUMSUB/download?apikey=$APIKEY"
 		STATUS=$(curl -I "$URL/ontologies/$ACRONYM/submissions/$NUMSUB/download?apikey=$APIKEY" 2>/dev/null | grep HTTP | cut -d' ' -f2)
-	        echo -e "\n\nStatus $STATUS"	
+	        echo -e "\t=>Status $STATUS [OK]"	
 		if [ "$STATUS" == "200" ]; then
-			wget $DOWNLOADURL -O bioportal-services/data/bioportal/repository/$ACRONYM.ttl
+			wget $DOWNLOADURL -q -O data/bioportal/repository/$ACRONYM.ttl
 		elif [ "$STATUS" == "403" ]; then 
-			echo -e "\tWARNING: Copyright/Licensing restrictions for $ACRONYM prevent the download..."
+			echo -e "\tWARNING: Licensing restrictions for $ACRONYM prevent the download..."
 		elif [ "$STATUS" == "404" -o "$STATUS" == "500" ]; then
 			echo -e "\tWARNING: The $ACRONYM ontology does not exist in the selected bioportal"
 		fi
 	fi
 done
-
