@@ -34,36 +34,43 @@ The script takes three arguments:
 
 If the process is interrupted, you can run the script again, it will not redownload ontologies that were already downloaded before. The ontologies downloaded are saved in the `data/bioportal/repository/` directory, if you mistakingly included an ontology you do not need, you may delete it directly from this directory. 
 
-Alternatively, instead of running this script you may manually put the ontologies in the `data/bioportal/repository/` directory if you already have them with the name ACRONYM.ttl, where ACRONYM is the actony of each ontology.
+Alternatively, instead of running this script you may manually put the ontologies in the `data/bioportal/repository/` directory if you already have them with the name ACRONYM.ttl, where ACRONYM is the acronym of each ontology.
  
 ### 2_build_containers.sh 
-This script will check if you have and ssh key, generate one if need be and add it to the authorized keys for the bioportal-api container. Subsequently, it will run `docker-compose build` to build all the containers prior to running them.
+This script will check if you have an ssh key, generate one if need be and add it to the authorized keys for the bioportal-api container. Subsequently, it will run `docker-compose build` to build all the containers prior to running them.
 
 ### 3_start_containers.sh
 This script will run `docker-compose up -d --force-recreate` to start all the containers and services. This is required before being able to populate the databases. 
 
 ### 4_populate.sh 
-This script will populate the different services with the ontologies in `data/bioportal/repository`. This step is very time and ressource consuming. Although it does not block, it sets off the full parsing, loading, indexing, caching and dictionary generation in the background. This process may take several hours to complete depending on the number and size of the ontologies selected. You may want to monitor the CPU activity of the dockerd process to determine when the population process is over.  
+This script will populate the different services with the ontologies in `data/bioportal/repository`. This step is very time and ressource consuming. Although it does not block, it sets off the full parsing, loading, indexing, caching and dictionary generation in the background. This process may take several hours to complete depending on the number and size of the ontologies selected. You may want to monitor the CPU activity of the dockerd process to determine when the population process is over. 
+
+### 5_stop_containers.sh
+Once the intexing process is over, you may use this script to stop the containers, it merely runs `docker-compose down`.
 
 ### Day to day operations
-Once the appliance is populated, you can directly use `docker-compose up -d --force-recreate` to start the services and docker-compose down to stop the services. 
+Once the appliance is populated, you can directly use `docker-compose up -d --force-recreate` to start the services and `docker-compose down` to stop the services. 
 
-If you subsequently add ontologies in `data/bioportal/repository`, they will automatically be indexed in time by ncbo_cron process in the bioportal-api container.  
+If you subsequently add ontologies in `data/bioportal/repository`, they will automatically be indexed in time by ncbo_cron process in the bioportal-api container. 
 
+If you wish to start from scratch, you may use the `0_purge_data_optional.sh` script to purge all the data and then repeat the initial setup-process by running scripts from 1 to 5 as extplained above.
 
 ## Requirements and dependencies on the host machine
 
 Use the latest version of Docker on a linux host with an up to date kernel (prefarably the latest stable release of the upstream branch). 
 
-Warning: The native version of docker for MacOS contains active bugs that cause the docker deamon to hang-up during the indexation process. If you wish to use this docker-compose on a MacOS host, you may want to use docker-toolkit and docker-machine to create a virtualized docker environemnt. Alternatively you may install docker in a virtual machine and deploy docker compose inside the virtual machine. The same may be true on a windows machine. 
+Warning: The native version of docker for MacOS contains active bugs that cause the docker deamon to hang-up during the indexation process. If you wish to use this docker-compose on a MacOS host, you may want to use docker-toolkit and docker-machine to create a virtualized docker environemnt. Alternatively you may install docker in a virtual machine and deploy docker compose inside the virtual machine. The same may be true on a Windows machine with the native windows version of docker. 
 
 ### Utilities required for the deployment process
 The depolyment and set-up process requires a number of basic utilities to run:
   - curl 
   - wget
   - jq (a json parser) 
+  - ssh (client)
 
 
 curl is required by `1_prepare_data.sh` and `4_populate.sh`.
+
+ssh is required for `4_populate.sh`.
 
 wget and jq are only required for `1_prepare_data`. 
