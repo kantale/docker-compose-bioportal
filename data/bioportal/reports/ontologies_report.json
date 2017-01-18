@@ -1,0 +1,31 @@
+{
+  "ontologies": {
+    "CIM-10": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "01/18/2017 02:38PM",
+      "logFilePath": "CIM-10/1/parsing.log",
+      "report_date_updated": "01/18/2017 02:39PM",
+      "errErrorStatus": [
+        "ERROR_INDEXED"
+      ],
+      "errMissingStatus": [
+        "INDEXED"
+      ]
+    },
+    "MSHFRE": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "01/18/2017 03:11PM",
+      "logFilePath": "MSHFRE/1/parsing.log",
+      "report_date_updated": "01/18/2017 03:13PM",
+      "errErrorStatus": [
+        "ERROR_INDEXED"
+      ],
+      "errMissingStatus": [
+        "INDEXED"
+      ]
+    }
+  },
+  "report_date_generated": "01/18/2017 01:56PM"
+}

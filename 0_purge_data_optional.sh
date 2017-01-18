@@ -1,7 +1,9 @@
 #!/bin/bash
 
-rm -fr data/bioportal/repository/*
-rm -fr data/4store/*
-rm -fr data/redis/goo/*
-rm -fr data/redis/http/*
-rm -fr data/redis/annotator/*
+sudo rm -fr data/bioportal/repository/*
+sudo rm -fr data/4store/*
+sudo rm -fr data/redis/goo/*
+sudo rm -fr data/redis/http/*
+sudo rm -fr data/redis/annotator/*
+
+echo -e "1000\tNULL" > data/mgrep/dictionary.txt 

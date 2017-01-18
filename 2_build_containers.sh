@@ -5,4 +5,11 @@ if [ ! -f ~/.ssh/id_rsa.pub  ]; then
 fi
 cat ~/.ssh/id_rsa.pub > ./bioportal-api/authorized_keys
 
+mkdir -p data/4store/
+mkdir -p data/bioportal/repository/
+mkdir -p data/bioportal/reports/
+mkdir -p data/redis/goo
+mkdir -p data/redis/http
+mkdir -p data/redis/annotator
+
 docker-compose build

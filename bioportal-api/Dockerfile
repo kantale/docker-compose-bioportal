@@ -2,6 +2,8 @@ FROM ruby:2.2.5
 EXPOSE 8080
 
 RUN mkdir /srv/ncbo/
+RUN mkdir -p /srv/bioportal/reports
+RUN mkdir -p /srv/bioportal/repository
 
 RUN apt-get update && apt-get install -y openssh-server
 

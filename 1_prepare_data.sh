@@ -26,6 +26,8 @@ elif [ "$PORTAL" == "ncbo" ]; then
 	URL="http://data.bioontology.org"
 fi
 
+mkdir -p data/bioportal/repository/
+
 for ACRONYM in $ONTOLOGIES
 do
 	echo "Processing $ACRONYM"

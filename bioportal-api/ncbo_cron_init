@@ -8,4 +8,4 @@ RUBY_PATH=/usr/local/rbenv/shims/
 export PATH=${RUBY_PATH}:$PATH:/usr/local/bin
 exec=${APP_HOME}/bin/${prog}
 cd $APP_HOME
-$exec $OPTS
+ruby -EUTF-8 $exec $OPTS
