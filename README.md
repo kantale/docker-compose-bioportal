@@ -12,7 +12,7 @@ This docker compose launches all the services necessary to run ontologies-api an
 
 The docker files of each of the services above confingures them properly to all run together and bind all the persistant data in the `data/`.
 
-##Deplyment and initial set-up
+##Deployment and initial set-up
 
 The first step in deploying this docker compose is to clone this repository:
 ```
@@ -51,7 +51,7 @@ Once the appliance is populated, you can directly use `docker-compose up -d --fo
 If you subsequently add ontologies in `data/bioportal/repository`, they will automatically be indexed in time by ncbo_cron process in the bioportal-api container.  
 
 
-## Requerements and dependencies on the host machine
+## Requirements and dependencies on the host machine
 
 Use the latest version of Docker on a linux host with an up to date kernel (prefarably the latest stable release of the upstream branch). 
 
