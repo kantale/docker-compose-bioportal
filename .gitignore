@@ -5,3 +5,5 @@ bioportal-api/authorized_keys
 *.log
 data/mgrep/dictionary.txt
 data/redis/
+data/4store
+data/bioportal/
