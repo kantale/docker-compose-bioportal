@@ -17,6 +17,8 @@ services:
   bioportal-solr:
     build: ./bioportal-solr
     container_name: bioportal-solr
+    volumes:
+      - ./data/solr:/opt/solr/solr
     ports: 
       - "8983"
   redis-annotator:

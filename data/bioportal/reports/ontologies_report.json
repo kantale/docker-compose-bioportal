@@ -16,15 +16,53 @@
     "MSHFRE": {
       "problem": true,
       "format": "OWL",
-      "date_created": "01/18/2017 03:11PM",
+      "date_created": "01/20/2017 12:28PM",
       "logFilePath": "MSHFRE/1/parsing.log",
-      "report_date_updated": "01/18/2017 03:13PM",
+      "report_date_updated": "01/20/2017 12:32PM",
       "errErrorStatus": [
         "ERROR_INDEXED"
       ],
       "errMissingStatus": [
         "INDEXED"
       ]
+    },
+    "SNMIFRE": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "01/20/2017 02:49PM",
+      "logFilePath": "SNMIFRE/1/parsing.log",
+      "report_date_updated": "01/20/2017 02:53PM",
+      "errErrorStatus": [
+        "ERROR_INDEXED"
+      ],
+      "errMissingStatus": [
+        "INDEXED"
+      ]
+    },
+    "TEST-ONT-1": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "01/20/2017 04:45PM",
+      "logFilePath": "TEST-ONT-1/2/parsing.log",
+      "report_date_updated": "01/20/2017 04:46PM",
+      "errMissingStatus": [
+        "METRICS",
+        "INDEXED"
+      ],
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Ontology Development and Management</span> | <span class='missing_term'>Modular Component</span> | <span class='missing_term'>Stimulator</span> | <span class='missing_term'>Cell Culture Facility</span> | <span class='missing_term'>Exploratory Data Analysis</span> | <span class='missing_term'>Clinical Research Data</span> | <span class='missing_term'>Private Funding Resource</span> | <span class='missing_term'>Human Embryonic Stem Cell Resource</span> | <span class='missing_term'>Outcomes Research</span> | <span class='missing_term'>Software Distribution</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>Ontology Development and Management</span> | <span class='missing_term'>Modular Component</span> | <span class='missing_term'>Stimulator</span> | <span class='missing_term'>Cell Culture Facility</span> | <span class='missing_term'>Exploratory Data Analysis</span> | <span class='missing_term'>Clinical Research Data</span> | <span class='missing_term'>Private Funding Resource</span> | <span class='missing_term'>Human Embryonic Stem Cell Resource</span> | <span class='missing_term'>Outcomes Research</span> | <span class='missing_term'>Software Distribution</span>"
+    },
+    "TEST-ONT-0": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "01/20/2017 04:45PM",
+      "logFilePath": "TEST-ONT-0/2/parsing.log",
+      "report_date_updated": "01/20/2017 04:46PM",
+      "errMissingStatus": [
+        "METRICS",
+        "ANNOTATOR"
+      ],
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Ontology Development and Management</span> | <span class='missing_term'>Modular Component</span> | <span class='missing_term'>Stimulator</span> | <span class='missing_term'>Cell Culture Facility</span> | <span class='missing_term'>Exploratory Data Analysis</span> | <span class='missing_term'>Clinical Research Data</span> | <span class='missing_term'>Private Funding Resource</span> | <span class='missing_term'>Human Embryonic Stem Cell Resource</span> | <span class='missing_term'>Outcomes Research</span> | <span class='missing_term'>Software Distribution</span>"
     }
   },
   "report_date_generated": "01/18/2017 01:56PM"
