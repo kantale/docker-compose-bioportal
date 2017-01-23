@@ -34,9 +34,14 @@ Annotator.config do |config|
 end
 
 NcboCron.config do |config|
+  
+  config.minutes_between = 3
+
   config.redis_host  = "redis-annotator"
   config.redis_port  = 6379
   config.search_index_all_url = "http://bioportal-solr:8983/solr/core2"
+
+
 
   # Ontologies Report config
   config.ontology_report_path = "/srv/bioportal/reports/ontologies_report.json"

@@ -1,69 +1,39 @@
 {
   "ontologies": {
+    "SNMIFRE": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "01/23/2017 02:31PM",
+      "logFilePath": "SNMIFRE/1/parsing.log",
+      "report_date_updated": "01/23/2017 03:05PM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>physaloptera erinacea</span> | <span class='missing_term'>corydalis caseana</span> | <span class='missing_term'>tremblement essentiel bénin</span> | <span class='missing_term'>413-414 kératinisation</span> | <span class='missing_term'>forme congénitale anormale de la masse centrale du corps d'une vertèbre sacrée</span> | <span class='missing_term'>destruction de lésion de la choroïde par photocoagulation par un flash à xénon</span> | <span class='missing_term'>rétention ancienne d'un corps étranger secondaire à une plaie pénétrante de l'orbite</span> | <span class='missing_term'>circonvolution intralimbique</span> | <span class='missing_term'>colectomie totale abdominale avec iléostomie</span> | <span class='missing_term'>libération du nerf trijumeau</span>"
+    },
+    "WHO-ARTFRE": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "01/23/2017 02:31PM",
+      "logFilePath": "WHO-ARTFRE/1/parsing.log",
+      "report_date_updated": "01/23/2017 02:32PM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Saturnisme</span> | <span class='missing_term'>Psychose maniacodepressive</span> | <span class='missing_term'>Thrombocythemie</span> | <span class='missing_term'>Rhabdomyolyse</span> | <span class='missing_term'>Augm perméabilité capillaire</span> | <span class='missing_term'>Ostéomyélite</span> | <span class='missing_term'>Hépatite cholostatique</span> | <span class='missing_term'>Handicap visuel</span> | <span class='missing_term'>Ulcération du larynx</span> | <span class='missing_term'>Vitiligo</span>"
+    },
     "CIM-10": {
       "problem": true,
       "format": "OWL",
-      "date_created": "01/18/2017 02:38PM",
+      "date_created": "01/23/2017 02:31PM",
       "logFilePath": "CIM-10/1/parsing.log",
-      "report_date_updated": "01/18/2017 02:39PM",
-      "errErrorStatus": [
-        "ERROR_INDEXED"
-      ],
-      "errMissingStatus": [
-        "INDEXED"
-      ]
+      "report_date_updated": "01/23/2017 03:22PM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>autres fistules de l'appareil génital de la femme</span> | <span class='missing_term'>goutte saturnine main</span> | <span class='missing_term'>perte de sang foetal</span> | <span class='missing_term'>troubles mentaux et du comportement liés à l'utilisation de cocaïne syndrome de dépendance utilisation épisodique (dipsomanie)</span> | <span class='missing_term'>autres affections des tissus mous, non classées ailleurs</span> | <span class='missing_term'>gastroentérites et colites d'origine infectieuse, autres et non précisées</span> | <span class='missing_term'>lésion ligamentaire région pelvienne et cuisse</span> | <span class='missing_term'>ostéoporose d'inactivité sièges multiples</span> | <span class='missing_term'>fracture pathologique, non classée ailleurs cheville et pied</span> | <span class='missing_term'>nécessité d'une vaccination contre la rage</span>"
     },
     "MSHFRE": {
       "problem": true,
       "format": "OWL",
-      "date_created": "01/20/2017 12:28PM",
-      "logFilePath": "MSHFRE/1/parsing.log",
-      "report_date_updated": "01/20/2017 12:32PM",
+      "date_created": "01/23/2017 05:03PM",
+      "logFilePath": "MSHFRE/2/parsing.log",
+      "report_date_updated": "01/23/2017 05:28PM",
       "errErrorStatus": [
-        "ERROR_INDEXED"
-      ],
-      "errMissingStatus": [
-        "INDEXED"
+        "ERROR_DIFF"
       ]
-    },
-    "SNMIFRE": {
-      "problem": true,
-      "format": "OWL",
-      "date_created": "01/20/2017 02:49PM",
-      "logFilePath": "SNMIFRE/1/parsing.log",
-      "report_date_updated": "01/20/2017 02:53PM",
-      "errErrorStatus": [
-        "ERROR_INDEXED"
-      ],
-      "errMissingStatus": [
-        "INDEXED"
-      ]
-    },
-    "TEST-ONT-1": {
-      "problem": true,
-      "format": "OWL",
-      "date_created": "01/20/2017 04:45PM",
-      "logFilePath": "TEST-ONT-1/2/parsing.log",
-      "report_date_updated": "01/20/2017 04:46PM",
-      "errMissingStatus": [
-        "METRICS",
-        "INDEXED"
-      ],
-      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Ontology Development and Management</span> | <span class='missing_term'>Modular Component</span> | <span class='missing_term'>Stimulator</span> | <span class='missing_term'>Cell Culture Facility</span> | <span class='missing_term'>Exploratory Data Analysis</span> | <span class='missing_term'>Clinical Research Data</span> | <span class='missing_term'>Private Funding Resource</span> | <span class='missing_term'>Human Embryonic Stem Cell Resource</span> | <span class='missing_term'>Outcomes Research</span> | <span class='missing_term'>Software Distribution</span>",
-      "errNoSearch": "Search - NO results for: <span class='missing_term'>Ontology Development and Management</span> | <span class='missing_term'>Modular Component</span> | <span class='missing_term'>Stimulator</span> | <span class='missing_term'>Cell Culture Facility</span> | <span class='missing_term'>Exploratory Data Analysis</span> | <span class='missing_term'>Clinical Research Data</span> | <span class='missing_term'>Private Funding Resource</span> | <span class='missing_term'>Human Embryonic Stem Cell Resource</span> | <span class='missing_term'>Outcomes Research</span> | <span class='missing_term'>Software Distribution</span>"
-    },
-    "TEST-ONT-0": {
-      "problem": true,
-      "format": "OWL",
-      "date_created": "01/20/2017 04:45PM",
-      "logFilePath": "TEST-ONT-0/2/parsing.log",
-      "report_date_updated": "01/20/2017 04:46PM",
-      "errMissingStatus": [
-        "METRICS",
-        "ANNOTATOR"
-      ],
-      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Ontology Development and Management</span> | <span class='missing_term'>Modular Component</span> | <span class='missing_term'>Stimulator</span> | <span class='missing_term'>Cell Culture Facility</span> | <span class='missing_term'>Exploratory Data Analysis</span> | <span class='missing_term'>Clinical Research Data</span> | <span class='missing_term'>Private Funding Resource</span> | <span class='missing_term'>Human Embryonic Stem Cell Resource</span> | <span class='missing_term'>Outcomes Research</span> | <span class='missing_term'>Software Distribution</span>"
     }
   },
-  "report_date_generated": "01/18/2017 01:56PM"
+  "report_date_generated": "01/20/2017 07:04PM"
 }

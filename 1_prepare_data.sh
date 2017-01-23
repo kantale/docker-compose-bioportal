@@ -19,10 +19,10 @@ if [ "$PORTAL" != "lirmm" ] && [ "$PORTAL" != "ncbo" ]; then
 fi
 
 if [ "$PORTAL" == "lirmm" ]; then
-	echo "(French) LIRMM Bioportal selected"
+	printf "\e[1m (French) LIRMM Bioportal selected\n \e[21m"
 	URL="http://data.bioportal.lirmm.fr"
 elif [ "$PORTAL" == "ncbo" ]; then 
-	echo "(English) NCBO Portal selected"
+	printf "\e[1m (English) NCBO Portal selected\n \e[21m"
 	URL="http://data.bioontology.org"
 fi
 
@@ -30,20 +30,20 @@ mkdir -p data/bioportal/repository/
 
 for ACRONYM in $ONTOLOGIES
 do
-	echo "Processing $ACRONYM"
+	printf "\tRetrieving \e[1m $ACRONYM... \e[21m"
 	SUBURL="$URL/ontologies/$ACRONYM/submissions?apikey=$APIKEY"
 	NUMSUB=`curl $SUBURL 2> /dev/null | jq "length"`
-	echo -e "\tFound $NUMSUB submissions, retrieving latest..."
 	if [ "$NUMSUB" -ne "0" ]; then
 		DOWNLOADURL="$URL/ontologies/$ACRONYM/submissions/$NUMSUB/download?apikey=$APIKEY"
 		STATUS=$(curl -I "$URL/ontologies/$ACRONYM/submissions/$NUMSUB/download?apikey=$APIKEY" 2>/dev/null | grep HTTP | cut -d' ' -f2)
-	        echo -e "\t=>Status $STATUS [OK]"	
 		if [ "$STATUS" == "200" ]; then
-			wget $DOWNLOADURL -q -O data/bioportal/repository/$ACRONYM.ttl
+			wget -c $DOWNLOADURL -q -O data/bioportal/repository/$ACRONYM.ttl
+			printf "\e[1m \e[32m [OK]\n \e[0m"
 		elif [ "$STATUS" == "403" ]; then 
-			echo -e "\tWARNING: Licensing restrictions for $ACRONYM prevent the download..."
+			printf "\e[91m [FAIL]\n\t \e[0m Licensing restrictions for $ACRONYM prevent the download...\n"
 		elif [ "$STATUS" == "404" -o "$STATUS" == "500" ]; then
-			echo -e "\tWARNING: The $ACRONYM ontology does not exist in the selected bioportal"
+			printf "\e[91m [FAIL]\n\t \e[0m The $ACRONYM ontology does not exist in the selected bioportal\n"			
 		fi
 	fi
 done
+printf "\e[1m Done! \e[0m \n"

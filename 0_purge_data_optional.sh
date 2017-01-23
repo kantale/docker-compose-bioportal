@@ -7,4 +7,5 @@ sudo rm -fr data/redis/http/*
 sudo rm -fr data/redis/annotator/*
 sudo rm -fr data/solr/core1/data
 sudo rm -fr data/solr/core2/data
+sudo rm -fr data/ncbo_logs/*
 sudo bash -c 'echo -e "1000\tNULL" > data/mgrep/dictionary.txt'
