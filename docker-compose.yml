@@ -39,6 +39,10 @@ services:
       - "6381:6379"
     volumes:
       - ./data/redis/goo:/data
+  rabbitmq:
+    image: rabbitmq
+    ports:
+      - "5672:5672"
  #bioportal-api:
  #   build: ./bioportal-api/
  #   container_name: bioportal-api
