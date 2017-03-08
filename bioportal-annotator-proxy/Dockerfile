@@ -9,6 +9,7 @@ tar -xzf apache-maven-3.3.9-bin.tar.gz \
 RUN cd / && export PATH=/apache-maven-3.3.9/bin:$PATH && \
 git clone https://github.com/sifrproject/annotators.git && \
 cd /annotators && git checkout issues_14_16 && \ 
+mkdir -p  sifr-bioportal-annotator-proxy/src/main/resources/ && \  
 echo "annotatorURI=http://bioportal-api:8080/annotator?" > sifr-bioportal-annotator-proxy/src/main/resources/annotatorProxy.properties && \
 mvn clean install
 
