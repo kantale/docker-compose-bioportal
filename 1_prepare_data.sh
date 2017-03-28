@@ -31,19 +31,15 @@ mkdir -p data/bioportal/repository/
 for ACRONYM in $ONTOLOGIES
 do
 	printf "\tRetrieving \e[1m $ACRONYM... \e[21m"
-	SUBURL="$URL/ontologies/$ACRONYM/submissions?apikey=$APIKEY"
-	NUMSUB=`curl $SUBURL 2> /dev/null | jq "length"`
-	if [ "$NUMSUB" -ne "0" ]; then
-		DOWNLOADURL="$URL/ontologies/$ACRONYM/submissions/$NUMSUB/download?apikey=$APIKEY"
-		STATUS=$(curl -I "$URL/ontologies/$ACRONYM/submissions/$NUMSUB/download?apikey=$APIKEY" 2>/dev/null | grep HTTP | cut -d' ' -f2)
-		if [ "$STATUS" == "200" ]; then
-			wget -c $DOWNLOADURL -q -O data/bioportal/repository/$ACRONYM.ttl
-			printf "\e[1m \e[32m [OK]\n \e[0m"
-		elif [ "$STATUS" == "403" ]; then 
-			printf "\e[91m [FAIL]\n\t \e[0m Licensing restrictions for $ACRONYM prevent the download...\n"
-		elif [ "$STATUS" == "404" -o "$STATUS" == "500" ]; then
-			printf "\e[91m [FAIL]\n\t \e[0m The $ACRONYM ontology does not exist in the selected bioportal\n"			
-		fi
-	fi
+  DOWNLOADURL="$URL/ontologies/$ACRONYM/download?apikey=$APIKEY"
+  STATUS=$(curl -I "$URL/ontologies/$ACRONYM/download?apikey=$APIKEY" 2>/dev/null | grep HTTP | cut -d' ' -f2)
+  if [ "$STATUS" == "200" ]; then
+    wget -c $DOWNLOADURL -q -O data/bioportal/repository/$ACRONYM.ttl
+    printf "\e[1m \e[32m [OK]\n \e[0m"
+  elif [ "$STATUS" == "403" ]; then 
+    printf "\e[91m [FAIL]\n\t \e[0m Licensing restrictions for $ACRONYM prevent the download...\n"
+  elif [ "$STATUS" == "404" -o "$STATUS" == "500" ]; then
+    printf "\e[91m [FAIL]\n\t \e[0m The $ACRONYM ontology does not exist in the selected bioportal\n"			
+  fi
 done
 printf "\e[1m Done! \e[0m \n"
