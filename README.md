@@ -30,7 +30,8 @@ The first step in deploying this docker compose is to clone this repository:
 Subsequently, administration scripts are provided to set-up the environment. You may should run them in the following order:
 
 ### 0_purge_data_optional.sh (Optional)
-Erases all the persistant data from the `data` directory. This is useful if you want to reset and already set-up bioportal instance. 
+
+Erases all the persistant data from the `data` directory. This is useful if you want to reset an already set-up bioportal instance. 
 
 ### 1_prepare_data.sh
 
