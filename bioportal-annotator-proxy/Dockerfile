@@ -28,6 +28,6 @@ WORKDIR /annotators/sifr-bioportal-annotator-proxy
 
 EXPOSE 8081
 
-CMD ["/apache-tomcat-6.0.48/bin/catalina.sh", "run"] 
+CMD ["/apache-tomcat-6.0.51/bin/catalina.sh", "run"] 
 
 
