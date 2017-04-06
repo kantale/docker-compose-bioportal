@@ -10,8 +10,8 @@ RUN apt-get update && apt-get install -y openssh-server
 RUN cd /srv/ncbo && \
 git clone https://github.com/sifrproject/ontologies_api.git && \
 git clone https://github.com/sifrproject/ncbo_cron.git && \
-cd /srv/ncbo/ontologies_api/ && bundle install && \
-cd /srv/ncbo/ncbo_cron/ && bundle install && \
+cd /srv/ncbo/ontologies_api/ && git checkout sifr && bundle install && \
+cd /srv/ncbo/ncbo_cron/ && git checkout sifr && bundle install && \
 service ssh start
 
 #RUN gem install rails
