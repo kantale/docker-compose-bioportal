@@ -49,7 +49,7 @@ begin
     Goo.use_cache             = true
 
     # Email notifications
-    config.enable_notifications   = true
+    config.enable_notifications   = false
     config.email_sender           = "notifications@bioportal.lirmm.fr" # Default sender for emails
     config.email_override         = "override@example.org" # all email gets sent here. Disable with email_override_disable.
     config.email_disable_override = true
@@ -58,7 +58,7 @@ begin
     config.smtp_auth_type         = :none # :none, :plain, :login, :cram_md5
     config.smtp_domain            = "lirmm.fr"
     # Emails of the instance administrators to get mail notifications when new user or new ontology
-    config.admin_emails           = ["jonquet@lirmm.fr", "vincent.emonet@lirmm.fr"]
+    config.admin_emails           = ["", ""]
 
     # PURL server config parameters
     config.enable_purl            = false

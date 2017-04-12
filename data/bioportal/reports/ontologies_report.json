@@ -1,39 +1,237 @@
 {
   "ontologies": {
+    "CISP-2": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:33AM",
+      "logFilePath": "CISP-2/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Trouble anxieux/état anxieux</span> | <span class='missing_term'>Saignement de nez, épistaxis</span> | <span class='missing_term'>Autre lésion traumatique du système respiratoire</span> | <span class='missing_term'>Autre lésion traumatique de l’oeil</span> | <span class='missing_term'>Perte d'appétit</span> | <span class='missing_term'>Coqueluche</span> | <span class='missing_term'>Peur d’une autre maladie digestive</span> | <span class='missing_term'>Endoscopie</span> | <span class='missing_term'>Hyperthyroïdie/thyréotoxicose</span> | <span class='missing_term'>Problème d'alimentation de l'adulte</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>Trouble anxieux/état anxieux</span> | <span class='missing_term'>Saignement de nez, épistaxis</span> | <span class='missing_term'>Autre lésion traumatique du système respiratoire</span> | <span class='missing_term'>Autre lésion traumatique de l’oeil</span> | <span class='missing_term'>Perte d'appétit</span> | <span class='missing_term'>Coqueluche</span> | <span class='missing_term'>Peur d’une autre maladie digestive</span> | <span class='missing_term'>Endoscopie</span> | <span class='missing_term'>Hyperthyroïdie/thyréotoxicose</span> | <span class='missing_term'>Problème d'alimentation de l'adulte</span>"
+    },
+    "CCAM": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:33AM",
+      "logFilePath": "CCAM/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>9. Lithotritie biliaire</span> | <span class='missing_term'>NCCA019 - Ostéosynthèse de fracture ou de décollement épiphysaire supramalléolaire des 2 os de la jambe, à foyer ouvert</span> | <span class='missing_term'>HBLD046 - Pose d'une prothèse amovible définitive complète bimaxillaire à châssis métallique</span> | <span class='missing_term'>6. Remnographie [IRM] de l'appareil digestif</span> | <span class='missing_term'>DZQM002 - Échocardiographie transthoracique continue avec épreuve de stress sur lit ergométrique</span> | <span class='missing_term'>JCSA003 - Fermeture de fistule urétérocutanée acquise, par abord direct</span> | <span class='missing_term'>JGFE004 - Résection et/ou désobstruction des conduits éjaculateurs, par urétrocystoscopie</span> | <span class='missing_term'>EQGA003 - Ablation d'un dispositif d'assistance circulatoire interne ou externe, en dehors d'un dispositif de contrepulsion diastolique intraaortique, par thoracotomie sans CEC</span> | <span class='missing_term'>ZEMP002 - Confection d'un appareil rigide d'immobilisation pelvibifémoral, pelvibicrural [pelvibijambier] ou pelvibipédieux</span> | <span class='missing_term'>QAMA003 - Réparation de perte de substance de l'extrémité céphalique par lambeau frontal à pédicule inférieur</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>9. Lithotritie biliaire</span> | <span class='missing_term'>NCCA019 - Ostéosynthèse de fracture ou de décollement épiphysaire supramalléolaire des 2 os de la jambe, à foyer ouvert</span> | <span class='missing_term'>HBLD046 - Pose d'une prothèse amovible définitive complète bimaxillaire à châssis métallique</span> | <span class='missing_term'>6. Remnographie [IRM] de l'appareil digestif</span> | <span class='missing_term'>DZQM002 - Échocardiographie transthoracique continue avec épreuve de stress sur lit ergométrique</span> | <span class='missing_term'>JCSA003 - Fermeture de fistule urétérocutanée acquise, par abord direct</span> | <span class='missing_term'>JGFE004 - Résection et/ou désobstruction des conduits éjaculateurs, par urétrocystoscopie</span> | <span class='missing_term'>EQGA003 - Ablation d'un dispositif d'assistance circulatoire interne ou externe, en dehors d'un dispositif de contrepulsion diastolique intraaortique, par thoracotomie sans CEC</span> | <span class='missing_term'>ZEMP002 - Confection d'un appareil rigide d'immobilisation pelvibifémoral, pelvibicrural [pelvibijambier] ou pelvibipédieux</span> | <span class='missing_term'>QAMA003 - Réparation de perte de substance de l'extrémité céphalique par lambeau frontal à pédicule inférieur</span>"
+    },
+    "INM": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/12/2017 04:11PM",
+      "logFilePath": "INM/1/parsing.log",
+      "report_date_updated": "04/12/2017 04:44PM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Thérapie helminthique</span> | <span class='missing_term'>Électrostimulation transcranienne</span> | <span class='missing_term'>Chiropraxie</span> | <span class='missing_term'>Massage par point de massage</span> | <span class='missing_term'>Posture zen</span> | <span class='missing_term'>Naturopathie</span> | <span class='missing_term'>Shiatsu</span> | <span class='missing_term'>Alitement</span> | <span class='missing_term'>Thalassothérapie</span> | <span class='missing_term'>Lunette connectée santé</span>"
+    },
+    "TOP-MENELAS": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:35AM",
+      "logFilePath": "TOP-MENELAS/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>modalité thétique</span> | <span class='missing_term'>valeur quantitative</span> | <span class='missing_term'>unité d'espace</span> | <span class='missing_term'>regulièrement</span> | <span class='missing_term'>bonne qualité</span> | <span class='missing_term'>modalité de satisfaction</span> | <span class='missing_term'>superviser</span> | <span class='missing_term'>ignorant</span> | <span class='missing_term'>souvent</span> | <span class='missing_term'>inférieur</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>modalité thétique</span> | <span class='missing_term'>valeur quantitative</span> | <span class='missing_term'>unité d'espace</span> | <span class='missing_term'>regulièrement</span> | <span class='missing_term'>bonne qualité</span> | <span class='missing_term'>modalité de satisfaction</span> | <span class='missing_term'>superviser</span> | <span class='missing_term'>ignorant</span> | <span class='missing_term'>souvent</span> | <span class='missing_term'>inférieur</span>"
+    },
+    "BHN": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:33AM",
+      "logFilePath": "BHN/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Uro décarboxylase tissulaire</span> | <span class='missing_term'>Porphobilinogène désaminase (PBGD) lymphocytaire</span> | <span class='missing_term'>Réception et prise en charge de pièce anatomique non fixée (hors examen extemporané)</span> | <span class='missing_term'>Porphyrines fécales (selles)</span> | <span class='missing_term'>Acide urique (liquides, ponction) (méthode enzymatique)</span> | <span class='missing_term'>Polypeptide pancréatique (sang)</span> | <span class='missing_term'>Ag Ca 72-4 (liquide autre)</span> | <span class='missing_term'>2. Sensibilité aux anti-virus</span> | <span class='missing_term'>Test de perméabilité intestinale (TPI) au mannitol</span> | <span class='missing_term'>Biotine B8 (sang)</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>Uro décarboxylase tissulaire</span> | <span class='missing_term'>Porphobilinogène désaminase (PBGD) lymphocytaire</span> | <span class='missing_term'>Réception et prise en charge de pièce anatomique non fixée (hors examen extemporané)</span> | <span class='missing_term'>Porphyrines fécales (selles)</span> | <span class='missing_term'>Acide urique (liquides, ponction) (méthode enzymatique)</span> | <span class='missing_term'>Polypeptide pancréatique (sang)</span> | <span class='missing_term'>Ag Ca 72-4 (liquide autre)</span> | <span class='missing_term'>2. Sensibilité aux anti-virus</span> | <span class='missing_term'>Test de perméabilité intestinale (TPI) au mannitol</span> | <span class='missing_term'>Biotine B8 (sang)</span>"
+    },
+    "ONTOTOXNUC": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:35AM",
+      "logFilePath": "ONTOTOXNUC/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>chelatant</span> | <span class='missing_term'>peau</span> | <span class='missing_term'>physiologie microbienne</span> | <span class='missing_term'>réparation nucleotide excision repair (NER)</span> | <span class='missing_term'>ARN polymérase</span> | <span class='missing_term'>chimie de coordination</span> | <span class='missing_term'>algue</span> | <span class='missing_term'>technique pull-down</span> | <span class='missing_term'>cystéine</span> | <span class='missing_term'>kinase</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>chelatant</span> | <span class='missing_term'>peau</span> | <span class='missing_term'>physiologie microbienne</span> | <span class='missing_term'>réparation nucleotide excision repair (NER)</span> | <span class='missing_term'>ARN polymérase</span> | <span class='missing_term'>chimie de coordination</span> | <span class='missing_term'>algue</span> | <span class='missing_term'>technique pull-down</span> | <span class='missing_term'>cystéine</span> | <span class='missing_term'>kinase</span>"
+    },
+    "CIF": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:33AM",
+      "logFilePath": "CIF/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>porter en main</span> | <span class='missing_term'>sauter</span> | <span class='missing_term'>mastiquer</span> | <span class='missing_term'>fonction vestibulaire de position</span> | <span class='missing_term'>éducation informelle</span> | <span class='missing_term'>autres sensations précisées associées à l'audition et aux fonctions vestibulaires</span> | <span class='missing_term'>mettre des chaussures</span> | <span class='missing_term'>services de planification des zones de plein air</span> | <span class='missing_term'>autres fonctions génitales et reproductives précisées et non précisées</span> | <span class='missing_term'>densité de population</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>porter en main</span> | <span class='missing_term'>sauter</span> | <span class='missing_term'>mastiquer</span> | <span class='missing_term'>fonction vestibulaire de position</span> | <span class='missing_term'>éducation informelle</span> | <span class='missing_term'>autres sensations précisées associées à l'audition et aux fonctions vestibulaires</span> | <span class='missing_term'>mettre des chaussures</span> | <span class='missing_term'>services de planification des zones de plein air</span> | <span class='missing_term'>autres fonctions génitales et reproductives précisées et non précisées</span> | <span class='missing_term'>densité de population</span>"
+    },
     "SNMIFRE": {
       "problem": true,
       "format": "OWL",
-      "date_created": "01/23/2017 02:31PM",
+      "date_created": "04/10/2017 10:35AM",
       "logFilePath": "SNMIFRE/1/parsing.log",
-      "report_date_updated": "01/23/2017 03:05PM",
-      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>physaloptera erinacea</span> | <span class='missing_term'>corydalis caseana</span> | <span class='missing_term'>tremblement essentiel bénin</span> | <span class='missing_term'>413-414 kératinisation</span> | <span class='missing_term'>forme congénitale anormale de la masse centrale du corps d'une vertèbre sacrée</span> | <span class='missing_term'>destruction de lésion de la choroïde par photocoagulation par un flash à xénon</span> | <span class='missing_term'>rétention ancienne d'un corps étranger secondaire à une plaie pénétrante de l'orbite</span> | <span class='missing_term'>circonvolution intralimbique</span> | <span class='missing_term'>colectomie totale abdominale avec iléostomie</span> | <span class='missing_term'>libération du nerf trijumeau</span>"
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>physaloptera erinacea</span> | <span class='missing_term'>corydalis caseana</span> | <span class='missing_term'>tremblement essentiel bénin</span> | <span class='missing_term'>413-414 kératinisation</span> | <span class='missing_term'>forme congénitale anormale de la masse centrale du corps d'une vertèbre sacrée</span> | <span class='missing_term'>destruction de lésion de la choroïde par photocoagulation par un flash à xénon</span> | <span class='missing_term'>rétention ancienne d'un corps étranger secondaire à une plaie pénétrante de l'orbite</span> | <span class='missing_term'>circonvolution intralimbique</span> | <span class='missing_term'>colectomie totale abdominale avec iléostomie</span> | <span class='missing_term'>libération du nerf trijumeau</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>physaloptera erinacea</span> | <span class='missing_term'>corydalis caseana</span> | <span class='missing_term'>tremblement essentiel bénin</span> | <span class='missing_term'>413-414 kératinisation</span> | <span class='missing_term'>forme congénitale anormale de la masse centrale du corps d'une vertèbre sacrée</span> | <span class='missing_term'>destruction de lésion de la choroïde par photocoagulation par un flash à xénon</span> | <span class='missing_term'>rétention ancienne d'un corps étranger secondaire à une plaie pénétrante de l'orbite</span> | <span class='missing_term'>circonvolution intralimbique</span> | <span class='missing_term'>colectomie totale abdominale avec iléostomie</span> | <span class='missing_term'>libération du nerf trijumeau</span>"
+    },
+    "HRDO": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:33AM",
+      "logFilePath": "HRDO/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Hémophilie A sévère</span> | <span class='missing_term'>Déficit isolé de stockage des granules plaquettaires delta</span> | <span class='missing_term'>Troubles divers du mouvement dus à une maladie génétique neurodégénérative</span> | <span class='missing_term'>Syndrome acro-réno-oculaire</span> | <span class='missing_term'>Atrésie colique</span> | <span class='missing_term'>Homeobox D10</span> | <span class='missing_term'>Excision repair cross-complementing rodent repair deficiency, complementation group 5</span> | <span class='missing_term'>Syndrome de Pfeiffer</span> | <span class='missing_term'>Dysplasie broncho-pulmonaire</span> | <span class='missing_term'>Genu valgum</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>Hémophilie A sévère</span> | <span class='missing_term'>Déficit isolé de stockage des granules plaquettaires delta</span> | <span class='missing_term'>Troubles divers du mouvement dus à une maladie génétique neurodégénérative</span> | <span class='missing_term'>Syndrome acro-réno-oculaire</span> | <span class='missing_term'>Atrésie colique</span> | <span class='missing_term'>Homeobox D10</span> | <span class='missing_term'>Excision repair cross-complementing rodent repair deficiency, complementation group 5</span> | <span class='missing_term'>Syndrome de Pfeiffer</span> | <span class='missing_term'>Dysplasie broncho-pulmonaire</span> | <span class='missing_term'>Genu valgum</span>"
+    },
+    "FRNORM": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/12/2017 04:11PM",
+      "logFilePath": "FRNORM/1/parsing.log",
+      "report_date_updated": "04/12/2017 04:32PM",
+      "errErrorStatus": [
+        "ERROR_ANNOTATOR"
+      ],
+      "errMissingStatus": [
+        "ANNOTATOR"
+      ],
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>AMOXICILLINE/ACIDE CLAVULANIQUE ALTER</span> | <span class='missing_term'>TRIMEBUTINE BIOGARAN</span> | <span class='missing_term'>INDAPAMIDE TEVA comprimé pelliculé à libération prolongée</span> | <span class='missing_term'>VALSARTAN/HYDROCHLOROTHIAZIDE KRKA 25 mg/ 160 mg</span> | <span class='missing_term'>galantamine (bromhydrate de)</span> | <span class='missing_term'>INORIAL 20 mg, comprimé</span> | <span class='missing_term'>abciximab (c 7e3b fab) solution injectable ou pour perfusion</span> | <span class='missing_term'>furoate de fluticasone / 27,5 microgrammes | suspension pour pulvérisation</span> | <span class='missing_term'>fumarate de rupatadine</span> | <span class='missing_term'>OPHTIM 0,50 POUR CENT (1,25 mg/0,25 ml), collyre en récipient unidose</span>"
+    },
+    "MUEVO": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/12/2017 04:11PM",
+      "logFilePath": "MUEVO/1/parsing.log",
+      "report_date_updated": "04/12/2017 04:16PM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Agent</span> | <span class='missing_term'>OntologyType</span> | <span class='missing_term'>Activity</span> | <span class='missing_term'>Ontology</span> | <span class='missing_term'>Entity</span> | <span class='missing_term'>OntologyEngineeringTool</span> | <span class='missing_term'>Person</span> | <span class='missing_term'>Concept</span> | <span class='missing_term'>List</span> | <span class='missing_term'>Person</span>"
+    },
+    "ONTOPNEUMO": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:35AM",
+      "logFilePath": "ONTOPNEUMO/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Flixotide</span> | <span class='missing_term'>FievreVesperale</span> | <span class='missing_term'>allergie</span> | <span class='missing_term'>blastomyces dermatidis</span> | <span class='missing_term'>NumerationDesLymphocytes</span> | <span class='missing_term'>AdenomeBronchique</span> | <span class='missing_term'>NumerationDesPolynucleairesEosinophiles</span> | <span class='missing_term'>MyxomeBronchique</span> | <span class='missing_term'>Proximal</span> | <span class='missing_term'>Rhinathiol</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>Flixotide</span> | <span class='missing_term'>FievreVesperale</span> | <span class='missing_term'>allergie</span> | <span class='missing_term'>blastomyces dermatidis</span> | <span class='missing_term'>NumerationDesLymphocytes</span> | <span class='missing_term'>AdenomeBronchique</span> | <span class='missing_term'>NumerationDesPolynucleairesEosinophiles</span> | <span class='missing_term'>MyxomeBronchique</span> | <span class='missing_term'>Proximal</span> | <span class='missing_term'>Rhinathiol</span>"
     },
     "WHO-ARTFRE": {
       "problem": true,
       "format": "OWL",
-      "date_created": "01/23/2017 02:31PM",
+      "date_created": "04/10/2017 10:35AM",
       "logFilePath": "WHO-ARTFRE/1/parsing.log",
-      "report_date_updated": "01/23/2017 02:32PM",
-      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Saturnisme</span> | <span class='missing_term'>Psychose maniacodepressive</span> | <span class='missing_term'>Thrombocythemie</span> | <span class='missing_term'>Rhabdomyolyse</span> | <span class='missing_term'>Augm perméabilité capillaire</span> | <span class='missing_term'>Ostéomyélite</span> | <span class='missing_term'>Hépatite cholostatique</span> | <span class='missing_term'>Handicap visuel</span> | <span class='missing_term'>Ulcération du larynx</span> | <span class='missing_term'>Vitiligo</span>"
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Saturnisme</span> | <span class='missing_term'>Psychose maniacodepressive</span> | <span class='missing_term'>Thrombocythemie</span> | <span class='missing_term'>Rhabdomyolyse</span> | <span class='missing_term'>Augm perméabilité capillaire</span> | <span class='missing_term'>Ostéomyélite</span> | <span class='missing_term'>Hépatite cholostatique</span> | <span class='missing_term'>Handicap visuel</span> | <span class='missing_term'>Ulcération du larynx</span> | <span class='missing_term'>Vitiligo</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>Saturnisme</span> | <span class='missing_term'>Psychose maniacodepressive</span> | <span class='missing_term'>Thrombocythemie</span> | <span class='missing_term'>Rhabdomyolyse</span> | <span class='missing_term'>Augm perméabilité capillaire</span> | <span class='missing_term'>Ostéomyélite</span> | <span class='missing_term'>Hépatite cholostatique</span> | <span class='missing_term'>Handicap visuel</span> | <span class='missing_term'>Ulcération du larynx</span> | <span class='missing_term'>Vitiligo</span>"
     },
     "CIM-10": {
       "problem": true,
       "format": "OWL",
-      "date_created": "01/23/2017 02:31PM",
+      "date_created": "04/10/2017 10:33AM",
       "logFilePath": "CIM-10/1/parsing.log",
-      "report_date_updated": "01/23/2017 03:22PM",
-      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>autres fistules de l'appareil génital de la femme</span> | <span class='missing_term'>goutte saturnine main</span> | <span class='missing_term'>perte de sang foetal</span> | <span class='missing_term'>troubles mentaux et du comportement liés à l'utilisation de cocaïne syndrome de dépendance utilisation épisodique (dipsomanie)</span> | <span class='missing_term'>autres affections des tissus mous, non classées ailleurs</span> | <span class='missing_term'>gastroentérites et colites d'origine infectieuse, autres et non précisées</span> | <span class='missing_term'>lésion ligamentaire région pelvienne et cuisse</span> | <span class='missing_term'>ostéoporose d'inactivité sièges multiples</span> | <span class='missing_term'>fracture pathologique, non classée ailleurs cheville et pied</span> | <span class='missing_term'>nécessité d'une vaccination contre la rage</span>"
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>N82.8 - autres fistules de l'appareil génital de la femme</span> | <span class='missing_term'>M10.14 - goutte saturnine | main</span> | <span class='missing_term'>P50 - perte de sang foetal</span> | <span class='missing_term'>F14.26 - troubles mentaux et du comportement liés à l'utilisation de cocaïne | syndrome de dépendance | utilisation épisodique (dipsomanie)</span> | <span class='missing_term'>M79 - autres affections des tissus mous, non classées ailleurs</span> | <span class='missing_term'>A09.0 - Gastroentérites et colites d'origine infectieuse, autres et non précisées</span> | <span class='missing_term'>M24.25 - lésion ligamentaire | région pelvienne et cuisse</span> | <span class='missing_term'>M81.20 - ostéoporose d'inactivité | sièges multiples</span> | <span class='missing_term'>M84.47 - fracture pathologique, non classée ailleurs | cheville et pied</span> | <span class='missing_term'>Z24.2 - nécessité d'une vaccination contre la rage</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>N82.8 - autres fistules de l'appareil génital de la femme</span> | <span class='missing_term'>M10.14 - goutte saturnine | main</span> | <span class='missing_term'>P50 - perte de sang foetal</span> | <span class='missing_term'>F14.26 - troubles mentaux et du comportement liés à l'utilisation de cocaïne | syndrome de dépendance | utilisation épisodique (dipsomanie)</span> | <span class='missing_term'>M79 - autres affections des tissus mous, non classées ailleurs</span> | <span class='missing_term'>A09.0 - Gastroentérites et colites d'origine infectieuse, autres et non précisées</span> | <span class='missing_term'>M24.25 - lésion ligamentaire | région pelvienne et cuisse</span> | <span class='missing_term'>M81.20 - ostéoporose d'inactivité | sièges multiples</span> | <span class='missing_term'>M84.47 - fracture pathologique, non classée ailleurs | cheville et pied</span> | <span class='missing_term'>Z24.2 - nécessité d'une vaccination contre la rage</span>"
+    },
+    "ONL-MR-DA": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:35AM",
+      "logFilePath": "ONL-MR-DA/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>support</span> | <span class='missing_term'>numéro de version</span> | <span class='missing_term'>valeur scalaire</span> | <span class='missing_term'>séquence de spectroscopie</span> | <span class='missing_term'>bibliothèque</span> | <span class='missing_term'>ordre des coupes non-entrelacé</span> | <span class='missing_term'>langage</span> | <span class='missing_term'>élément lexical</span> | <span class='missing_term'>jeu de données tomographiques de médecine nucléaire</span> | <span class='missing_term'>contraste en T2 étoile</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>support</span> | <span class='missing_term'>numéro de version</span> | <span class='missing_term'>valeur scalaire</span> | <span class='missing_term'>séquence de spectroscopie</span> | <span class='missing_term'>bibliothèque</span> | <span class='missing_term'>ordre des coupes non-entrelacé</span> | <span class='missing_term'>langage</span> | <span class='missing_term'>élément lexical</span> | <span class='missing_term'>jeu de données tomographiques de médecine nucléaire</span> | <span class='missing_term'>contraste en T2 étoile</span>"
+    },
+    "STY": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:35AM",
+      "logFilePath": "STY/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>groupe</span> | <span class='missing_term'>comportement individuel</span> | <span class='missing_term'>groupe de patients ou de personnes handicapées</span> | <span class='missing_term'>attribut de l'organisme</span> | <span class='missing_term'>archaebactérie</span> | <span class='missing_term'>tissu</span> | <span class='missing_term'>dispositif de recherche</span> | <span class='missing_term'>organisme de secours ou d'auto-assistance</span> | <span class='missing_term'>concept fonctionnel</span> | <span class='missing_term'>fonction moléculaire</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>groupe</span> | <span class='missing_term'>comportement individuel</span> | <span class='missing_term'>groupe de patients ou de personnes handicapées</span> | <span class='missing_term'>attribut de l'organisme</span> | <span class='missing_term'>archaebactérie</span> | <span class='missing_term'>tissu</span> | <span class='missing_term'>dispositif de recherche</span> | <span class='missing_term'>organisme de secours ou d'auto-assistance</span> | <span class='missing_term'>concept fonctionnel</span> | <span class='missing_term'>fonction moléculaire</span>"
+    },
+    "LPP": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/12/2017 04:11PM",
+      "logFilePath": "LPP/1/parsing.log",
+      "report_date_updated": "04/12/2017 04:15PM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Sous-cuisse tissu élastique pour bandage herniaire B39N</span> | <span class='missing_term'>Sparadrap non élastique, >= 3000 cm2 et < 5000 cm2</span> | <span class='missing_term'>Stimulateur cardiaque double chambre fréq. asserv., MEDTRONIC, ADAPTA DR ADDR 03 \" 06</span> | <span class='missing_term'>Valve cardiaque, valve animale, VASCUTEK, AV33-porcin et equin</span> | <span class='missing_term'>Bandes extensibles tissées ou tricotées, 3 m à l'étirage et largeur 0,07 m</span> | <span class='missing_term'>SECTION 1 : Dispositifs médicaux pour le traitement des maladies respiratoires et oto-rhino-laryngologiques</span> | <span class='missing_term'>Cheville, implant tibial, non cimenté, NEWDEAL SA (FRANCE), HINTEGRA</span> | <span class='missing_term'>Vêtement compressif, supplément gant ouvert ou fermé, séparateur interdigital</span> | <span class='missing_term'>Bandage double à ressort avec sous-cuisse pour hernie inguinale B12N</span> | <span class='missing_term'>Plaque d'obturation, tissu animal, > 20cm2, VASCUTEK, PATCH FLUOROPASSIV-BOVIN</span>"
+    },
+    "ONTOLURGENCES": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/12/2017 04:11PM",
+      "logFilePath": "ONTOLURGENCES/1/parsing.log",
+      "report_date_updated": "04/12/2017 04:47PM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>septicémie</span> | <span class='missing_term'>lésion radiculaire cervicale</span> | <span class='missing_term'>dystrophie musculaire progressive héréditaire</span> | <span class='missing_term'>Contusion médullaire</span> | <span class='missing_term'>effet toxique de l'acide chlorhydrique</span> | <span class='missing_term'>organe non parenchymateux</span> | <span class='missing_term'>actes thérapeutiques sur la vulve et le périnée féminin</span> | <span class='missing_term'>thromboendartériectomie du tronc artériel brachiocéphalique</span> | <span class='missing_term'>abrasion de la région péribuccale de la face</span> | <span class='missing_term'>endocardite</span>"
+    },
+    "ONL-DP": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:34AM",
+      "logFilePath": "ONL-DP/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>support</span> | <span class='missing_term'>numéro de version</span> | <span class='missing_term'>valeur scalaire</span> | <span class='missing_term'>opération arithmétique sur un jeu de données</span> | <span class='missing_term'>bibliothèque</span> | <span class='missing_term'>langage</span> | <span class='missing_term'>recadrage</span> | <span class='missing_term'>élément lexical</span> | <span class='missing_term'>transformation en ondelettes</span> | <span class='missing_term'>restauration</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>support</span> | <span class='missing_term'>numéro de version</span> | <span class='missing_term'>valeur scalaire</span> | <span class='missing_term'>opération arithmétique sur un jeu de données</span> | <span class='missing_term'>bibliothèque</span> | <span class='missing_term'>langage</span> | <span class='missing_term'>recadrage</span> | <span class='missing_term'>élément lexical</span> | <span class='missing_term'>transformation en ondelettes</span> | <span class='missing_term'>restauration</span>"
+    },
+    "ATCFRE": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/12/2017 04:10PM",
+      "logFilePath": "ATCFRE/1/parsing.log",
+      "report_date_updated": "04/12/2017 04:13PM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>D07AC01 - bétaméthasone</span> | <span class='missing_term'>S03CA04 - hydrocortisone et antiinfectieux</span> | <span class='missing_term'>C09XA - inhibiteurs de la rénine</span> | <span class='missing_term'>V09DX - autres produits radiopharmaceutiques à usage diagnostique pour la fonction hépatique et le système réticulo-endothélial</span> | <span class='missing_term'>S03BA02 - prednisolone</span> | <span class='missing_term'>L03AX05 - pidotimod</span> | <span class='missing_term'>A02BX05 - subcitrate de bismuth</span> | <span class='missing_term'>J07X - autres vaccins</span> | <span class='missing_term'>V08CX - autres produits de contraste pour imagerie par résonance magnétique</span> | <span class='missing_term'>J07BA01 - encéphalite transmise par les tiques, virus entier inactivé</span>"
+    },
+    "MEDLINEPLUS": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:34AM",
+      "logFilePath": "MEDLINEPLUS/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>santé des femmes</span> | <span class='missing_term'>démence</span> | <span class='missing_term'>sueur</span> | <span class='missing_term'>mésothéliome</span> | <span class='missing_term'>coqueluche</span> | <span class='missing_term'>santé du voyageur</span> | <span class='missing_term'>santé des animaux domestiques</span> | <span class='missing_term'>système immunitaire</span> | <span class='missing_term'>maladies métaboliques</span> | <span class='missing_term'>sécurité de l'eau</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>santé des femmes</span> | <span class='missing_term'>démence</span> | <span class='missing_term'>sueur</span> | <span class='missing_term'>mésothéliome</span> | <span class='missing_term'>coqueluche</span> | <span class='missing_term'>santé du voyageur</span> | <span class='missing_term'>santé des animaux domestiques</span> | <span class='missing_term'>système immunitaire</span> | <span class='missing_term'>maladies métaboliques</span> | <span class='missing_term'>sécurité de l'eau</span>"
+    },
+    "ONL-CORE-MSA": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:34AM",
+      "logFilePath": "ONL-CORE-MSA/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>entretien d'évaluation du comportement</span> | <span class='missing_term'>support</span> | <span class='missing_term'>numéro de version</span> | <span class='missing_term'>valeur scalaire</span> | <span class='missing_term'>langage</span> | <span class='missing_term'>élément lexical</span> | <span class='missing_term'>valuation d'une variable numérique</span> | <span class='missing_term'>nom d'un groupe</span> | <span class='missing_term'>expression</span> | <span class='missing_term'>artefact technique</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>entretien d'évaluation du comportement</span> | <span class='missing_term'>support</span> | <span class='missing_term'>numéro de version</span> | <span class='missing_term'>valeur scalaire</span> | <span class='missing_term'>langage</span> | <span class='missing_term'>élément lexical</span> | <span class='missing_term'>valuation d'une variable numérique</span> | <span class='missing_term'>nom d'un groupe</span> | <span class='missing_term'>expression</span> | <span class='missing_term'>artefact technique</span>"
+    },
+    "NABM": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/12/2017 04:11PM",
+      "logFilePath": "NABM/1/parsing.log",
+      "report_date_updated": "04/12/2017 04:15PM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>GRIPPE_A : SD_PAR_EIA</span> | <span class='missing_term'>LITHIUM (LI) DANS UN AUTRE LIQUIDE BIOLOGIQUE QUE LE SANG</span> | <span class='missing_term'>RAI : IDENTIFICATION</span> | <span class='missing_term'>ADENOVIRUS : MISE EN EVIDENCE SUR SELLES PAR ME</span> | <span class='missing_term'>EX MICROBIO URINES (ECBU)</span> | <span class='missing_term'>IGE SPEC. : IDENTIF. ALLERGENE UNIQUE (TROPHALLERGENES)</span> | <span class='missing_term'>EX MYCO ISOLE CHAMPIGNON EXOTIQUE SUR COUPE D'ORGANE</span> | <span class='missing_term'>ALPHA 1 ANTITRYPSINE FECALE</span> | <span class='missing_term'>UR. : CRISTALLURIE</span> | <span class='missing_term'>CYTOPATH. GYNECOLOGIQUE UN OU PLUSIEURS PRELEVEMENTS (FROTTIS)</span>"
+    },
+    "MTHMSTFRE": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:34AM",
+      "logFilePath": "MTHMSTFRE/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:27AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Muqueuse duodénale nodulaire diffuse</span> | <span class='missing_term'>Pseudomembranes coliques segmentaires</span> | <span class='missing_term'>Varices oesophagiennes de grade i</span> | <span class='missing_term'>échographie per-endoscopique</span> | <span class='missing_term'>Grande courbure du corps gastrique</span> | <span class='missing_term'>Pédiculé de polype duodénal</span> | <span class='missing_term'>Grande courbure de l'antre</span> | <span class='missing_term'>Aspect de cholecystectomie</span> | <span class='missing_term'>Muqueuse gastrique friable localisée</span> | <span class='missing_term'>Type iii: aucun signe de saignement d'ulcere duodénal</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>Muqueuse duodénale nodulaire diffuse</span> | <span class='missing_term'>Pseudomembranes coliques segmentaires</span> | <span class='missing_term'>Varices oesophagiennes de grade i</span> | <span class='missing_term'>échographie per-endoscopique</span> | <span class='missing_term'>Grande courbure du corps gastrique</span> | <span class='missing_term'>Pédiculé de polype duodénal</span> | <span class='missing_term'>Grande courbure de l'antre</span> | <span class='missing_term'>Aspect de cholecystectomie</span> | <span class='missing_term'>Muqueuse gastrique friable localisée</span> | <span class='missing_term'>Type iii: aucun signe de saignement d'ulcere duodénal</span>"
     },
     "MSHFRE": {
       "problem": true,
       "format": "OWL",
-      "date_created": "01/23/2017 05:03PM",
-      "logFilePath": "MSHFRE/2/parsing.log",
-      "report_date_updated": "01/23/2017 05:28PM",
-      "errErrorStatus": [
-        "ERROR_DIFF"
-      ]
+      "date_created": "04/12/2017 04:11PM",
+      "logFilePath": "MSHFRE/1/parsing.log",
+      "report_date_updated": "04/12/2017 04:44PM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Brevibacterium</span> | <span class='missing_term'>Hydrogensulfite reductase</span> | <span class='missing_term'>Noyaux médians du thalamus</span> | <span class='missing_term'>Sphenostylis</span> | <span class='missing_term'>Conversion de lits</span> | <span class='missing_term'>Oeuvres de bienfaisance</span> | <span class='missing_term'>Portographie</span> | <span class='missing_term'>Oscillométrie</span> | <span class='missing_term'>Essais</span> | <span class='missing_term'>Procaïnamide</span>"
+    },
+    "MDRFRE": {
+      "problem": true,
+      "format": "OWL",
+      "date_created": "04/10/2017 10:33AM",
+      "logFilePath": "MDRFRE/1/parsing.log",
+      "report_date_updated": "04/10/2017 11:28AM",
+      "errNoAnnotator": "Annotator - NO results for: <span class='missing_term'>Anticorps anti-kinase spécifique du muscle positif</span> | <span class='missing_term'>Hyperesthésie des pieds</span> | <span class='missing_term'>Hémorragie muqueuse SAI</span> | <span class='missing_term'>Dyschromie dentaire</span> | <span class='missing_term'>Hyperpigmentation de l'iris</span> | <span class='missing_term'>Echographie</span> | <span class='missing_term'>Déréalisation</span> | <span class='missing_term'>Casomorphine dans l'urine normale</span> | <span class='missing_term'>Entorse sacro-iliaque chronique</span> | <span class='missing_term'>Electrocochléogramme anormal</span>",
+      "errNoSearch": "Search - NO results for: <span class='missing_term'>Anticorps anti-kinase spécifique du muscle positif</span> | <span class='missing_term'>Hyperesthésie des pieds</span> | <span class='missing_term'>Hémorragie muqueuse SAI</span> | <span class='missing_term'>Dyschromie dentaire</span> | <span class='missing_term'>Hyperpigmentation de l'iris</span> | <span class='missing_term'>Echographie</span> | <span class='missing_term'>Déréalisation</span> | <span class='missing_term'>Casomorphine dans l'urine normale</span> | <span class='missing_term'>Entorse sacro-iliaque chronique</span> | <span class='missing_term'>Electrocochléogramme anormal</span>"
     }
   },
-  "report_date_generated": "01/20/2017 07:04PM"
+  "report_date_generated": "04/10/2017 11:28AM"
 }

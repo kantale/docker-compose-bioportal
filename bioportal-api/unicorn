@@ -4,5 +4,6 @@ APP_ROOT=/srv/ncbo/ontologies_api
 ENVIRONMENT=production
 
 cd $APP_ROOT
+bundle install 
 bundle exec unicorn -c config/unicorn.rb -E $ENVIRONMENT
 

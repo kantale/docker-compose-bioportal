@@ -47,6 +47,7 @@ services:
       - ./data/ncbo_logs/:/srv/ncbo/ncbo_cron/logs/
       - ./data/mgrep/:/srv/mgrep/dictionary
       - ./data/bioportal/reports:/srv/bioportal/reports/
+      - ./data/var/run/:/var/run/
     ports:
       - "8080:8080"
       - "2222:22"
