@@ -30,6 +30,8 @@
   <cores adminPath="/admin/cores" host="${host:}" hostPort="${jetty.port:8983}" hostContext="${hostContext:solr}">
     <core name="NCBO1" config="solrconfig.xml" instanceDir="core1" schema="schema.xml" dataDir="data"/>
     <core name="NCBO2" config="solrconfig.xml" instanceDir="core2" schema="schema.xml" dataDir="data"/>
+    <core name="NCBO3" config="solrconfig.xml" instanceDir="prop_core1" schema="schema.xml" dataDir="data"/>
+    <core name="NCBO4" config="solrconfig.xml" instanceDir="prop_core2" schema="schema.xml" dataDir="data"/>
     <shardHandlerFactory name="shardHandlerFactory" class="HttpShardHandlerFactory">
       <str name="urlScheme">${urlScheme:}</str>
       <int name="socketTimeout">${socketTimeout:0}</int>
