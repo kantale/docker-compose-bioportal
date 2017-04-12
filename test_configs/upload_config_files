@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Create symbolic links for config files in the BioPortal projects in the local machine to perform tests
+# We take a workspace where ontologies_linked_data, ontologies_api, ncbo_cron
+
+if [ -z "$1" ]; then
+  WORKSPACE="/home/emonet/ruby_workspace"
+else
+  WORKSPACE="$1"
+fi
+
+echo "Putting config files in the following workspace: $WORKSPACE"
+
+DOCKER_WORKSPACE=`pwd`
+
+ln -s $DOCKER_WORKSPACE/config_CRON_TEST.rb $WORKSPACE/ncbo_cron/config/config.rb
+
+ln -s $DOCKER_WORKSPACE/test_API.rb $WORKSPACE/ontologies_api/config/environments/test.rb
+
+ln -s $DOCKER_WORKSPACE/config_LINKED_DATA_TEST.rb $WORKSPACE/ontologies_linked_data/config/config.rb
