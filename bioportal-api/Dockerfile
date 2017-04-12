@@ -18,10 +18,15 @@ service ssh start
 
 COPY ncbo_cron_init /srv/ncbo/
 
-RUN apt-get update && apt-get -y install nginx-full openjdk-7-jre-headless raptor2-utils
+RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list && \
+echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list && \
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886 && apt-get update && \
+echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
+apt-get -y install oracle-java8-installer raptor2-utils
 
 # Copy config files
-COPY nginx.conf /etc/nginx/nginx.conf
+#COPY nginx.conf /etc/nginx/nginx.conf
 #COPY config-ontologies-api.rb /srv/ncbo/ontologies_api/config/config.rb
 COPY config-ncbo-cron.rb /srv/ncbo/ncbo_cron/config/config.rb
 COPY config-ontologies-api.rb /srv/ncbo/ontologies_api/config/environments/production.rb

@@ -2,8 +2,9 @@
 
 service ssh start
 
-echo "Starting Nginx..."
-/usr/sbin/nginx &
+#echo "Starting Nginx..."
+#/usr/sbin/nginx &
+rm -rf /srv/ncbo/ontologies_api/log
 echo "Starting unicorn..."
 /srv/ncbo/unicorn &
 echo "Starting NCBO Cron..."
@@ -13,7 +14,7 @@ sleep 20
 
 echo "Creating admin user..."
 
-curl -X POST -H "Content-Type: application/json" -d "{\"username\": \"admin\", \"email\": \"admin@god.org\", \"role\": [\"ADMINISTRATOR\"], \"passwordHash\": \"$2a$10$7mtLAlun2GUqAtVxLjrqDObh0aagR31i9BnZcX/S42wJQb.E3yBRq\", \"password\": \"$2a$10$7mtLAlun2GUqAtVxLjrqDObh0aagR31i9BnZcX/S42wJQb.E3yBRq\", \"apikey\": \"61297daf-147c-40f3-b9b1-a3a2d6b744fa\"}" http://localhost:8080/users
+curl -X POST -H 'Content-Type: application/json" -d "{\"username\": \"admin\", \"email\": \"admin@god.org\", \"role\": [\"ADMINISTRATOR\"], \"passwordHash\": \"$2a$10$7mtLAlun2GUqAtVxLjrqDObh0aagR31i9BnZcX/S42wJQb.E3yBRq\", \"password\": \"$2a$10$7mtLAlun2GUqAtVxLjrqDObh0aagR31i9BnZcX/S42wJQb.E3yBRq\", \"apikey\": \"61297daf-147c-40f3-b9b1-a3a2d6b744fa\"}' http://localhost:8080/users
 
 echo "61297daf-147c-40f3-b9b1-a3a2d6b744fa" > /srv/bioportal/apikey
 
