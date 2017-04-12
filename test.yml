@@ -1,0 +1,32 @@
+version: '2'
+services:
+  bioportal-4store:
+    extends:
+      file: common.yml
+      service: bioportal-4store
+  bioportal-mgrep:
+    extends:
+      file: common.yml
+      service: bioportal-mgrep
+  bioportal-solr:
+    extends:
+      file: common.yml
+      service: bioportal-solr
+  redis-annotator:
+    extends:
+      file: common.yml
+      service: redis-annotator
+    ports:
+      - "6379:6379"
+  redis-http:
+    extends:
+      file: common.yml
+      service: redis-http
+    ports:
+      - "6380:6379"
+  redis-goo:
+    extends:
+      file: common.yml
+      service: redis-goo
+    ports:
+      - "6381:6379"
