@@ -1,2 +1,2 @@
 #!/bin/bash
-docker-compose -f test.yml up
+docker-compose -f test.yml up --force-recreate
