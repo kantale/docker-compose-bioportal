@@ -16,67 +16,54 @@
  limitations under the License.
 -->
 
-<schema name="ncbo_class" version="1.6">
+<schema name="ncbo_property" version="1.6">
   <fields>
     <!-- id is an internal Solr id -->
-    <field name="id"                    type="string"             indexed="true"  stored="true"  multiValued="false" required="true" />
-    <field name="resource_id"           type="string"             indexed="true"  stored="true"  multiValued="false" required="true" />
+    <field name="id"                         type="string"             indexed="true"  stored="true"  multiValued="false" required="true" />
+    <field name="resource_id"                type="string"             indexed="true"  stored="true"  multiValued="false" required="true" />
 
     <!-- searchable fields -->
-    <field name="prefLabel"             type="text_general"       indexed="true"  stored="true"  multiValued="false" />
-    <field name="prefLabelExact"        type="string_ci"          indexed="true"  stored="true"  multiValued="false" />
-    <field name="prefLabelSuggest"      type="text_suggest"       indexed="true"  stored="true"  omitNorms="true" />
-    <field name="prefLabelSuggestEdge"  type="text_suggest_edge"  indexed="true"  stored="true" />
-    <field name="prefLabelSuggestNgram" type="text_suggest_ngram" indexed="true"  stored="true"  omitNorms="true" />
+    <field name="label"                      type="text_general"       indexed="true"  stored="true"  multiValued="true" />
+    <field name="labelExact"                 type="string_ci"          indexed="true"  stored="true"  multiValued="true" />
+    <field name="labelSuggest"               type="text_suggest"       indexed="true"  stored="true"  omitNorms="true" multiValued="true" />
+    <field name="labelSuggestEdge"           type="text_suggest_edge"  indexed="true"  stored="true"  multiValued="true" />
+    <field name="labelSuggestNgram"          type="text_suggest_ngram" indexed="true"  stored="true"  omitNorms="true" multiValued="true" />
 
-    <field name="synonym"               type="text_general"       indexed="true"  stored="true"  multiValued="true" />
-    <field name="synonymExact"          type="string_ci"          indexed="true"  stored="true"  multiValued="true" />
-    <field name="synonymSuggest"        type="text_suggest"       indexed="true"  stored="true"  omitNorms="true" multiValued="true" />
-    <field name="synonymSuggestEdge"    type="text_suggest_edge"  indexed="true"  stored="true"  multiValued="true" />
-    <field name="synonymSuggestNgram"   type="text_suggest_ngram" indexed="true"  stored="true"  omitNorms="true" multiValued="true" />
+    <field name="labelGenerated"             type="text_general"       indexed="true"  stored="true"  multiValued="true" />
+    <field name="labelGeneratedExact"        type="string_ci"          indexed="true"  stored="true"  multiValued="true" />
+    <field name="labelGeneratedSuggest"      type="text_suggest"       indexed="true"  stored="true"  omitNorms="true" multiValued="true" />
+    <field name="labelGeneratedSuggestEdge"  type="text_suggest_edge"  indexed="true"  stored="true"  multiValued="true" />
+    <field name="labelGeneratedSuggestNgram" type="text_suggest_ngram" indexed="true"  stored="true"  omitNorms="true" multiValued="true" />
 
-    <field name="notation"              type="text_general"       indexed="true"  stored="true"  multiValued="false" />
-
-    <field name="definition"            type="string"             indexed="true"  stored="true"  multiValued="true" />
-    <field name="submissionAcronym"     type="string"             indexed="true"  stored="true"  multiValued="false" />
-    <field name="ontologyType"          type="ontologyType"       indexed="true"  stored="true"  multiValued="false" />
-    <field name="submissionId"          type="int"                indexed="true"  stored="true"  multiValued="false" />
-    <field name="childCount"            type="int"                indexed="true"  stored="true"  multiValued="false" />
-    <field name="_version_"             type="long"               indexed="true"  stored="true"/>
-
-    <!-- Added cui and tui (semanticType) - NCBO-695 -->
-    <field name="cui"                   type="text_general"       indexed="true"  stored="true"  multiValued="true" />
-    <field name="semanticType"          type="text_general"       indexed="true"  stored="true"  multiValued="true" />
+    <field name="definition"                 type="string"             indexed="true"  stored="true"  multiValued="true" />
+    <field name="submissionAcronym"          type="string"             indexed="true"  stored="true"  multiValued="false" />
+    <field name="parents"                    type="string"             indexed="true"  stored="true"  multiValued="true" />
+    <field name="ontologyType"               type="ontologyType"       indexed="true"  stored="true"  multiValued="false" />
+    <field name="propertyType"               type="propertyType"       indexed="true"  stored="true"  multiValued="false" />
+    <field name="ontologyId"                 type="string"             indexed="true"  stored="true"  multiValued="false" />
+    <field name="submissionId"               type="int"                indexed="true"  stored="true"  multiValued="false" />
+    <field name="_version_"                  type="long"               indexed="true"  stored="true" />
 
     <!-- catchall field, containing all other searchable text fields (implemented
         via copyField further on in this schema  -->
-    <field name="text"                  type="text_general"       indexed="true"  stored="false" multiValued="true" />
-
-    <field name="property"              type="text_general"       indexed="true"  stored="true"  multiValued="true" />
-    <field name="propertyRaw"           type="text_general"       indexed="false" stored="true"  multiValued="false" />
-
-    <field name="obsolete"              type="boolean"            indexed="true"  stored="true"  multiValued="false" default="false"/>
-    <field name="provisional"           type="boolean"            indexed="true"  stored="true"  multiValued="false" default="false"/>
-
-    <dynamicField name="*"              type="string"             indexed="false" stored="true"  multiValued="true" />
+    <field name="text"                       type="text_general"       indexed="true"  stored="false" multiValued="true" />
+    <dynamicField name="*"                   type="string"             indexed="false" stored="true"  multiValued="true" />
   </fields>
 
   <!-- field to use to determine and enforce document uniqueness. -->
   <uniqueKey>id</uniqueKey>
 
-  <copyField source="prefLabel" dest="text"/>
-  <copyField source="prefLabel" dest="prefLabelExact"/>
-  <copyField source="prefLabel" dest="prefLabelSuggest" />
-  <copyField source="prefLabel" dest="prefLabelSuggestEdge" />
-  <copyField source="prefLabel" dest="prefLabelSuggestNgram" />
+  <copyField source="label" dest="text"/>
+  <copyField source="label" dest="labelExact"/>
+  <copyField source="label" dest="labelSuggest" />
+  <copyField source="label" dest="labelSuggestEdge" />
+  <copyField source="label" dest="labelSuggestNgram" />
 
-  <copyField source="synonym" dest="text"/>
-  <copyField source="synonym" dest="synonymExact"/>
-  <copyField source="synonym" dest="synonymSuggest" />
-  <copyField source="synonym" dest="synonymSuggestEdge" />
-  <copyField source="synonym" dest="synonymSuggestNgram" />
-
-  <copyField source="notation" dest="text"/>
+  <copyField source="labelGenerated" dest="text"/>
+  <copyField source="labelGenerated" dest="labelGeneratedExact"/>
+  <copyField source="labelGenerated" dest="labelGeneratedSuggest" />
+  <copyField source="labelGenerated" dest="labelGeneratedSuggestEdge" />
+  <copyField source="labelGenerated" dest="labelGeneratedSuggestNgram" />
 
   <types>
     <!-- field type definitions. The "name" attribute is
@@ -88,6 +75,7 @@
     -->
 
     <fieldType name="ontologyType" class="solr.EnumField" enumsConfig="enumsconfig.xml" enumName="ontologyType"/>
+    <fieldType name="propertyType" class="solr.EnumField" enumsConfig="enumsconfig.xml" enumName="propertyType"/>
 
     <!-- The StrField type is not analyzed, but indexed/stored verbatim. -->
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" />
@@ -274,7 +262,7 @@
                 ignoreCase="true"
                 words="lang/stopwords_en.txt"
                 enablePositionIncrements="true"
-                />
+        />
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.EnglishPossessiveFilterFactory"/>
         <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
@@ -290,7 +278,7 @@
                 ignoreCase="true"
                 words="lang/stopwords_en.txt"
                 enablePositionIncrements="true"
-                />
+        />
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.EnglishPossessiveFilterFactory"/>
         <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
@@ -324,7 +312,7 @@
                 ignoreCase="true"
                 words="lang/stopwords_en.txt"
                 enablePositionIncrements="true"
-                />
+        />
         <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="1" catenateNumbers="1" catenateAll="0" splitOnCaseChange="1"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
@@ -337,7 +325,7 @@
                 ignoreCase="true"
                 words="lang/stopwords_en.txt"
                 enablePositionIncrements="true"
-                />
+        />
         <filter class="solr.WordDelimiterFilterFactory" generateWordParts="1" generateNumberParts="1" catenateWords="0" catenateNumbers="0" catenateAll="0" splitOnCaseChange="1"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
@@ -394,7 +382,7 @@
                 splitOnCaseChange="1"
                 splitOnNumerics="1"
                 preserveOriginal="1"
-                />
+        />
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.PatternReplaceFilterFactory" pattern="([^\w\d\*æøåÆØÅ ])" replacement=" " replace="all"/>
       </analyzer>
@@ -409,7 +397,7 @@
                 catenateAll="0"
                 splitOnCaseChange="0"
                 splitOnNumerics="0"
-                />
+        />
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.PatternReplaceFilterFactory" pattern="([^\w\d\*æøåÆØÅ ])" replacement=" " replace="all"/>
       </analyzer>
@@ -499,7 +487,7 @@
           -->
         <filter class="solr.PatternReplaceFilterFactory"
                 pattern="([^a-z])" replacement="" replace="all"
-                />
+        />
       </analyzer>
     </fieldType>
 
