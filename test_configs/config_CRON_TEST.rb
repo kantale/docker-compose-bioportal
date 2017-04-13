@@ -9,6 +9,8 @@ LinkedData.config do |config|
   config.goo_port           = 9000
 
   config.search_server_url  = "http://localhost:8983/solr/core1"
+  #config.search_server_url = "http://localhost:8983/solr/term_search_core1"
+  config.property_search_server_url = "http://localhost:8983/solr/prop_search_core1"
 
   # Change rest_url_prefix for test is creating bugs
 #  config.rest_url_prefix   = "http://localhost:9393/"
