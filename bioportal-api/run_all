@@ -6,7 +6,7 @@ service ssh start
 #/usr/sbin/nginx &
 rm -rf /srv/ncbo/ontologies_api/log
 echo "Starting unicorn..."
-/srv/ncbo/unicorn &
+/srv/ncbo/unicorn 
 echo "Starting NCBO Cron..."
 /srv/ncbo/ncbo_cron_init
 

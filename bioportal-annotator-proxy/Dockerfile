@@ -10,7 +10,7 @@ RUN cd / && export PATH=/apache-maven-3.3.9/bin:$PATH && \
 git clone https://github.com/sifrproject/annotators.git && \
 cd /annotators && \ 
 mkdir -p  sifr-bioportal-annotator-proxy/src/main/resources/ && \  
-echo "annotatorURI=http://bioportal-api:8080/annotator" > sifr-bioportal-annotator-proxy/src/main/resources/annotatorProxy.properties && \
+echo "annotatorURI=http://bioportal-api:8080/annotator \nsparqlEndpoint=http://4store:9000/sparql/ \ncontext.language=FRENCH" > sifr-bioportal-annotator-proxy/src/main/resources/annotatorProxy.properties && \
 mvn clean validate install; cd sifr-bioportal-annotation-model; mvn clean validate install; cd ../sifr-bioportal-annotator-scoring && mvn install && cd ../ && mvn install 
 
 RUN wget http://mirrors.ircam.fr/pub/apache/tomcat/tomcat-6/v6.0.53/bin/apache-tomcat-6.0.53.tar.gz && \
