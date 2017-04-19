@@ -7,8 +7,11 @@ data/mgrep/dictionary.txt
 data/redis/
 data/4store
 data/bioportal/
-data/solr/core1/data 
-data/solr/core2/data
 data/var
 data/bioportal/reports
-
+data/solr/core1/data 
+data/solr/core2/data 
+data/solr/term_search_core1/data 
+data/solr/term_search_core2/data 
+data/solr/prop_search_core1/data 
+data/solr/prop_search_core2/data 

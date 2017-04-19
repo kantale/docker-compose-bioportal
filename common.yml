@@ -1,0 +1,44 @@
+version: '2'
+services:
+  bioportal-4store:
+    build: ./bioportal-4store
+    container_name: bioportal-4store
+    ports: 
+      - "9000:9000"
+    volumes: 
+      - ./data/4store/:/var/lib/4store
+  bioportal-mgrep:
+    build: ./bioportal-mgrep
+    container_name: bioportal-mgrep
+    ports: 
+      - "55555:55555"
+    volumes:
+      - ./data/mgrep/:/opt/mgrep/dictionary
+  bioportal-solr:
+    build: ./bioportal-solr
+    container_name: bioportal-solr
+    volumes:
+      - ./data/solr:/opt/solr/solr
+    ports: 
+      - "8983:8983"
+  redis-annotator:
+    image: redis:3.0.7-alpine
+    container_name: bioportal-redis-annotator
+    ports: 
+      - "6379"
+    volumes:
+      - ./data/redis/annotator/:/data
+  redis-http:
+    image: redis:3.0.7-alpine
+    container_name: bioportal-redis-http
+    ports: 
+      - "6379"
+    volumes:
+      - ./data/redis/http/:/data
+  redis-goo:
+    image: redis:3.0.7-alpine
+    container_name: bioportal-redis-goo
+    ports: 
+      - "6379"
+    volumes:
+      - ./data/redis/goo:/data
