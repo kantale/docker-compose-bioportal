@@ -24,7 +24,7 @@ The docker files of each of the services above confingures them properly to all 
 
 ## Test environment
 
-Run the following script: `00_run_test_containers.sh`, it will run only the container needed for testing and expose the right ports. Nothing more is needed.
+If you wish to run the `ncbo_cron` integration tests to check that the containers are set-up properly, run the following script: `00_run_test_containers.sh`, it will run only the containers needed for the test and expose the right ports. Nothing more is needed.
 
 
 
@@ -59,31 +59,23 @@ Alternatively, instead of running this script you may manually put the ontologie
 ### 2_build_containers.sh 
 This script will check if you have an ssh key, generate one if need be and add it to the authorized keys for the bioportal-api container. Subsequently, it will run `docker-compose build` to build all the containers prior to running them.
 
-### 3_start_containers.sh
-This script will run `docker-compose up -d --force-recreate` to start all the containers and services. This is required before being able to populate the databases. 
+### 3_initialize.sh
+This script will run `docker-compose up -d --force-recreate` to start all the containers and services and will then proceed to submit all the ontologies located in the `data/bioportal/repository/`directory. 
 
-### 4_populate.sh 
-This script will populate the different services with the ontologies in `data/bioportal/repository`. 
+The script will show you the submission logs, you must monitor them during the submission process until no more ontologies are being processed for more than a few minutes. At that point you will see the `Finished ontology process queue check` repeatedly without any ontologies starting to be processed. 
 
-This step is very time and ressource consuming. 
+You can then interrupt the script. 
 
-After you run the script you will be shown the progress log in iterative tail more. You may interrupt the log when the ontology processing in finished. 
-
-The script will give you the appropriate instructions/
-
-### 5_generate_dictionary
-
-Once all the ontologies have been processed, this script witll generate the dictionary for mgrep that will be required for the operation of the annotator.
-
-### 6_stop_containers_optional.sh (Optional) 
-You may use this script to stop the containers, it merely runs `docker-compose down`. Use this when you want to stop the bioportal docker from running, you will be able to restart it subsequently as instructed below. 
+rtal docker from running, you will be able to restart it subsequently as instructed below. 
 
 ### Day to day operations
-Once the appliance is populated and the initial set-up is finished, you no not need to go through all the steps any longer. You can use `3_start_containers.sh` and `6_stop_containers_optional.sh` to start and stop all the services as you need. 
-
-If you subsequently add ontologies in `data/bioportal/repository`, they will automatically start being processed within 3 minutes of th submission. 
+Once the appliance is populated and the initial set-up is finished, you may stop your containers as per usual with `docker-compose down`  . To start the containers again, you can use `docker-compose up`
 
 If you wish to start from scratch, you may use the `0_purge_data_optional.sh` script to purge all the data and then repeat the initial setup-process by running scripts from 1 to 5 from the start.
+
+If you wish to update the containers in the docker-compose to use the latest version of `ontologies-api`, `ncbo-cron` and `annotator-proxy`, you can manually rebuild the containers with: `docker-compose build --no-cache bioportal-api` and `docker-compose build --no-cache bioportal-annotator-proxy` .
+
+You then need to restart and recreate the containers: `docker-compose down` and then `docker-compose up --force-recreate`
 
 ## Requirements and dependencies on the host machine
 
@@ -94,13 +86,12 @@ Warning: The native version of docker for MacOS contains active bugs that cause 
 ### Utilities required for the deployment process
 The depolyment and set-up process requires a number of basic utilities to run:
 - curl 
-  - wget
-  - jq (a json parser) 
-  - ssh (client)
+- wget
+- ssh (client)
 
 
-curl is required by `1_prepare_data.sh` and `4_populate.sh`.
+curl is required by `1_prepare_data.sh` and `3_initialize.sh`.
 
-ssh is required for `4_populate.sh`.
+ssh is required for `3_initialize.sh`.
 
-wget and jq are only required for `1_prepare_data`. 
+wget is only required for `1_prepare_data`. 
