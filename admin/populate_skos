@@ -1,0 +1,27 @@
+#!/bin/bash
+
+
+pwd=`pwd`
+pushd `dirname $pwd`
+
+echo "Processing ontologies..."
+for ONTFILE in $(ls -1 $pwd/data/bioportal/repository/*.ttl); do
+	ACRONYM=$(basename $ONTFILE | cut -d'.' -f1)
+	echo -e "\t$ACRONYM :Creating acronym and submitting ontology file..."
+	
+	curl -X POST -H "Content-Type: application/json" -d "{ \"acronym\": \"$ACRONYM\", \"name\": \"$ACRONYM\", \"administeredBy\": [ ] }"  http://localhost:8080/ontologies 
+
+	curl -X POST -H "Content-Type: application/json" -d "{ \"hasOntologyLanguage\": \"SKOS\", \"uploadFilePath\": \"/srv/bioportal/repository/$ACRONYM.ttl\", \"contact\": [{\"name\": \"Admin\", \"email\": \"admin@god.fr\"}],\"released\": \"2015-09-06\"}"  http://localhost:8080/ontologies/$ACRONYM/submissions	
+
+	#ssh root@localhost -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -p 2222 "cd /srv/ncbo/ncbo_cron && git pull && ruby -EUTF-8 ./bin/ncbo_create_submission.rb $ACRONYM /srv/bioportal/repository/$ACRONYM.ttl admin" 
+done
+
+printf "The ontologies have been submitted, the queue will start processing within a minute... The full indexing process may take between mitues and hours depending on the number of ontologies and their size.\n"
+
+printf "I will show you the scheduler logs (tail -f data/ncbo_logs/scheduler.log)\n Please keep the logs open until the process is finishsed. \n \e[92m You will see: \e[1m 'Finished ontology process queue check' \n \e[1m"
+
+sleep 15
+
+tail -f $pwd/data/ncbo_logs/scheduler.log;
+
+popd
