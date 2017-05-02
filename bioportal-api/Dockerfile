@@ -5,8 +5,6 @@ RUN mkdir /srv/ncbo/
 RUN mkdir -p /srv/bioportal/reports
 RUN mkdir -p /srv/bioportal/repository
 
-RUN apt-get update && apt-get install -y openssh-server
-
 RUN cd /srv/ncbo && \
 git clone https://github.com/sifrproject/ontologies_api.git && \
 git clone https://github.com/sifrproject/ncbo_cron.git && \

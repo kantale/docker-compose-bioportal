@@ -2,6 +2,6 @@
 
 pushd `dirname $0`
 ./init-ncbo-cron
-ssh root@localhost -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -p 2222 "cd /srv/ncbo/ncbo_cron/ | ruby -EUTF-8 ./bin/ncbo_cron"
+docker exec bioportal-api bash -c "cd /srv/ncbo/ncbo_cron/ && ruby -EUTF-8 ./bin/ncbo_cron"
 
 popd
