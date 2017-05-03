@@ -20,7 +20,7 @@ begin
     config.goo_host           = "bioportal-4store"
     config.goo_port           = 9000
     config.search_server_url  = "http://bioportal-solr:8083/solr/core1"
-    config.rest_url_prefix   = "http://localhost:9393/"
+    config.rest_url_prefix   = "http://localhost:8080/"
     config.enable_security   = true
     config.id_url_prefix      = "http://data.bioontology.org/"
     config.enable_security    = false # set on false for CRON
