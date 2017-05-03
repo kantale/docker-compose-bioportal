@@ -4,6 +4,9 @@
 pwd=`pwd`
 pushd `dirname $pwd`
 
+rm -f $pwd/data/bioportal/repository/labels.ttl
+rm -f $pwd/data/bioportal/repository/mappings.ttl
+
 echo "Processing ontologies..."
 for ONTFILE in $(ls -1 $pwd/data/bioportal/repository/*.ttl); do
 	ACRONYM=$(basename $ONTFILE | cut -d'.' -f1)
@@ -13,8 +16,29 @@ for ONTFILE in $(ls -1 $pwd/data/bioportal/repository/*.ttl); do
 
 	curl -X POST -H "Content-Type: application/json" -d "{ \"hasOntologyLanguage\": \"OWL\", \"uploadFilePath\": \"/srv/bioportal/repository/$ACRONYM.ttl\", \"contact\": [{\"name\": \"Admin\", \"email\": \"admin@god.fr\"}],\"released\": \"2015-09-06\"}"  http://localhost:8080/ontologies/$ACRONYM/submissions	
 
-	#ssh root@localhost -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null -p 2222 "cd /srv/ncbo/ncbo_cron && git pull && ruby -EUTF-8 ./bin/ncbo_create_submission.rb $ACRONYM /srv/bioportal/repository/$ACRONYM.ttl admin" 
 done
+
+for ONTFILE in $(ls -1 $pwd/data/bioportal/repository/*.owl); do
+	ACRONYM=$(basename $ONTFILE | cut -d'.' -f1)
+	echo -e "\t$ACRONYM :Creating acronym and submitting ontology file..."
+	
+	curl -X POST -H "Content-Type: application/json" -d "{ \"acronym\": \"$ACRONYM\", \"name\": \"$ACRONYM\", \"administeredBy\": [ ] }"  http://localhost:8080/ontologies 
+
+	curl -X POST -H "Content-Type: application/json" -d "{ \"hasOntologyLanguage\": \"OWL\", \"uploadFilePath\": \"/srv/bioportal/repository/$ACRONYM.owl\", \"contact\": [{\"name\": \"Admin\", \"email\": \"admin@god.fr\"}],\"released\": \"2015-09-06\"}"  http://localhost:8080/ontologies/$ACRONYM/submissions	
+
+done
+
+for ONTFILE in $(ls -1 $pwd/data/bioportal/repository/*.skos); do
+	ACRONYM=$(basename $ONTFILE | cut -d'.' -f1)
+	echo -e "\t$ACRONYM :Creating acronym and submitting ontology file..."
+	
+	curl -X POST -H "Content-Type: application/json" -d "{ \"acronym\": \"$ACRONYM\", \"name\": \"$ACRONYM\", \"administeredBy\": [ ] }"  http://localhost:8080/ontologies 
+
+	curl -X POST -H "Content-Type: application/json" -d "{ \"hasOntologyLanguage\": \"SKOS\", \"uploadFilePath\": \"/srv/bioportal/repository/$ACRONYM.skos\", \"contact\": [{\"name\": \"Admin\", \"email\": \"admin@god.fr\"}],\"released\": \"2015-09-06\"}"  http://localhost:8080/ontologies/$ACRONYM/submissions	
+
+done
+
+
 
 printf "The ontologies have been submitted, the queue will start processing within a minute... The full indexing process may take between mitues and hours depending on the number of ontologies and their size.\n"
 
