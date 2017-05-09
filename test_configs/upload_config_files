@@ -18,3 +18,5 @@ ln -s $DOCKER_WORKSPACE/config_CRON_TEST.rb $WORKSPACE/ncbo_cron/config/config.r
 ln -s $DOCKER_WORKSPACE/test_API.rb $WORKSPACE/ontologies_api/config/environments/test.rb
 
 ln -s $DOCKER_WORKSPACE/config_LINKED_DATA_TEST.rb $WORKSPACE/ontologies_linked_data/config/config.rb
+
+ln -s $DOCKER_WORKSPACE/config_ANNOTATOR_TEST.rb $WORKSPACE/ncbo_annotator/config/config.rb
