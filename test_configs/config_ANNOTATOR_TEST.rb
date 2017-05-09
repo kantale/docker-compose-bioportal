@@ -26,7 +26,7 @@ LinkedData.config do |config|
 end
 
 Annotator.config do |config|
-  config.mgrep_dictionary_file   = "./test/data/dictionary.txt"
+  config.mgrep_dictionary_file   = "/home/emonet/docker_workspace/docker-compose-bioportal/data/mgrep/dictionary.txt"
   #config.mgrep_dictionary_file   = "/home/emonet/ruby_workspace/ncbo_annotator/test/data/dictionary.txt"
   config.stop_words_default_file = "./test/data/default_stop_words.txt"
   #config.stop_words_default_file = "/home/emonet/ruby_workspace/ncbo_annotator/test/data/default_stop_words.txt"
