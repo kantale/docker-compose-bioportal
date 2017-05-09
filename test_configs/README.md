@@ -23,6 +23,9 @@ It considere that all the projects are located in the same directory (/home/emon
 
 ### Different projects
 
-* ncbo_annotator
+* ontologies_linked_data, ncbo_cron and ontologies_api are working
 
-Be careful with dictionary path in config
+* ncbo_annotator is not working at the moment.
+
+The dictionary and solr index are well filled, but 0 results from Annotate.
+Be careful with dictionary path in config file.
