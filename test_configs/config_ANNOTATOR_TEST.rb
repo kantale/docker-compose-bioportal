@@ -27,8 +27,10 @@ LinkedData.config do |config|
 end
 
 Annotator.config do |config|
-  config.mgrep_dictionary_file   = "/srv/mgrep/mgrep-55555/test_dictionary.txt"
-  config.stop_words_default_file = "/home/emonet/ruby_workspace/ontologies_api/config/default_stop_words.txt"
+  config.mgrep_dictionary_file   = "./test/data/dictionary.txt"
+  #config.mgrep_dictionary_file   = "/home/emonet/ruby_workspace/ncbo_annotator/test/data/dictionary.txt"
+  config.stop_words_default_file = "./test/data/default_stop_words.txt"
+  #config.stop_words_default_file = "/home/emonet/ruby_workspace/ncbo_annotator/test/data/default_stop_words.txt"
   config.mgrep_host              = "localhost"
   config.mgrep_port              = 55555
   config.annotator_redis_host    = "localhost"
