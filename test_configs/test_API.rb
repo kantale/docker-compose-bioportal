@@ -22,8 +22,11 @@ LinkedData.config do |config|
   config.http_redis_host    = "localhost"
   config.http_redis_port    = 6380
 
-  config.logger   = Logger.new("/srv/logtest.log")
-  config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
+  # Used to define other bioportal that can be mapped to
+  config.interportal_hash   = {"ncbo" => {"api" => "http://data.bioontology.org", "ui" => "http://bioportal.bioontology.org", "apikey" => "4a5011ea-75fa-4be6-8e89-f45c8c84844e"}}
+
+  #config.logger   = Logger.new("/srv/logtest.log")
+  #config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
 end
 
 Annotator.config do |config|
