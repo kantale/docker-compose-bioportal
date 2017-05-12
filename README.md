@@ -44,7 +44,7 @@ If you wish to run the `ncbo_cron` integration tests to check that the container
 
 ## Quick setup
 
-A quick guide with commands to easily setup a BioPortal appliance on your machine
+A quick guide with commands to easily setup a BioPortal appliance on your machine (with security disabled)
 
 ```shell
 ./0_purge_data_and_reset.sh
@@ -52,7 +52,15 @@ A quick guide with commands to easily setup a BioPortal appliance on your machin
 ./3_initialize.sh
 ```
 
-* We now need to create the admin user with the apikey `61297daf-147c-40f3-b9b1-a3a2d6b744fa`:
+A "admin" user is created with the following apikey: `61297daf-147c-40f3-b9b1-a3a2d6b744fa`
+
+You can stop the containers by doing: `docker-compose down` and run them again with `docker-compose up`
+
+### Enable Security
+
+By default the docker build is set with security disabled, making it easier to use for tests and development (no apikey is asked when interacting with the API). Security can be enabled by changing the `config.enable_security = false` to `true` in  `bioportal-api/config-ontologies-api.rb` file.
+
+* Now that the security has been enabled the admin user is not automatically created. We need to create the admin user through the NCBO Cron console, with the apikey `61297daf-147c-40f3-b9b1-a3a2d6b744fa`:
 
 ```shell
 # Access to the NCBO Cron console
@@ -72,21 +80,20 @@ LinkedData::Models::User.new({:username => "admin", :email => "admin@god.org", :
 # using pullLocation (here Movie Ontology)
 curl -X PUT -H "Content-Type: application/json" -H "Authorization: apikey token=61297daf-147c-40f3-b9b1-a3a2d6b744fa" -d '{ "acronym": "TEST", "name": "Test Ontology", "administeredBy": ["admin"]}' http://localhost:8080/ontologies/TEST
 
-curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/TEST", "hasOntologyLanguage": "OWL", "released": "2013-01-01T16:40:48-08:00", "pullLocation": "http://www.movieontology.org/2010/01/movieontology.owl"}' http://localhost:8080/ontologies/TEST/submissions
+curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/TEST", "hasOntologyLanguage": "OWL", "released": "2016-01-01", "pullLocation": "http://www.movieontology.org/2010/01/movieontology.owl"}' http://localhost:8080/ontologies/TEST/submissions
 
-# The STY ttl file has been previously put in data/bioportal. So it is in /srv/bioportal in the container (for uploadFilePath param). But not working
+# The STY ttl file has been previously put in data/bioportal. So it is in /srv/bioportal in the container (for uploadFilePath param). But not working (the ontology file is not properly copied to the submission repertory)
 curl -X PUT -H "Content-Type: application/json" -H "Authorization: apikey token=61297daf-147c-40f3-b9b1-a3a2d6b744fa" -d '{ "acronym": "STY", "name": "UMLS Semantic Network", "administeredBy": ["admin"]}' http://localhost:8080/ontologies/STY
 
-curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/STY", "hasOntologyLanguage": "UMLS", "released": "2013-01-01T16:40:48-08:00", "uploadFilePath": "/srv/bioportal/umls_semantictypes_2015AA.ttl"}' http://localhost:8080/ontologies/STY/submissions
+# Copy the ontology file in the repository
+cp data/bioportal/umls_semantictypes_2015AA.ttl data/bioportal/repository/umls_semantictypes_2015AA.ttl
 
-curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/STY", "hasOntologyLanguage": "UMLS", "released": "2013-01-01T16:40:48-08:00", "uploadFilePath": "/srv/bioportal/repository/umls_semantictypes_2015AA.ttl"}' http://localhost:8080/ontologies/STY/submissions
+curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/STY", "hasOntologyLanguage": "UMLS", "released": "2016-01-01", "uploadFilePath": "/srv/bioportal/repository/umls_semantictypes_2015AA.ttl"}' http://localhost:8080/ontologies/STY/submissions
 ```
 
 
 
-
-
-## Deployment and initial setup
+## Scripts details and preparing data
 
 The first step in deploying this docker compose is to clone this repository:
 ```
