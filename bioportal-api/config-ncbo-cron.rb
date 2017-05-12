@@ -3,7 +3,8 @@ LinkedData.config do |config|
   config.cube_host = "redis-http"
   config.goo_host = "bioportal-4store"
   config.goo_port = 9000
-  config.search_server_url = "http://bioportal-solr:8983/solr/core1"
+  config.search_server_url = "http://bioportal-solr:8983/solr/term_search_core1"
+  config.property_search_server_url = "http://bioportal-solr:8983/solr/prop_search_core1"
   config.repository_folder = "/srv/bioportal/repository/"
   config.http_redis_host = "redis-http"
   config.http_redis_port = 6379
@@ -39,9 +40,8 @@ NcboCron.config do |config|
 
   config.redis_host  = "redis-annotator"
   config.redis_port  = 6379
-  config.search_index_all_url = "http://bioportal-solr:8983/solr/core2"
-
-
+  config.search_index_all_url = "http://bioportal-solr:8983/solr/term_search_core2"
+  config.property_search_index_all_url = "http://bioportal-solr:8983/solr/prop_search_core2"
 
   # Ontologies Report config
   config.ontology_report_path = "/srv/bioportal/reports/ontologies_report.json"
