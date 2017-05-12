@@ -32,6 +32,19 @@ Annotator.config do |config|
   config.mgrep_port              = 55555
   config.annotator_redis_host  = "redis-annotator"
   config.annotator_redis_port  = 6379
+
+  config.annotator_redis_prefix  = "c1:"
+  config.annotator_redis_alt_prefix  = "c2:"
+
+  # Config for lemmatization
+  config.lemmatizer_jar   = "/srv/ncbo/Lemmatizer/"
+  config.mgrep_lem_dictionary_file  = "/srv/mgrep/dictionary/dictionary-lem.txt"
+  config.mgrep_lem_host          = "localhost"
+  config.mgrep_lem_port          = 55557
+
+  # To add other recognizers
+  config.enable_recognizer_param = false
+  config.supported_recognizers = []
 end
 
 NcboCron.config do |config|
