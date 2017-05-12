@@ -52,9 +52,20 @@ A quick guide with commands to easily setup a BioPortal appliance on your machin
 ./3_initialize.sh
 ```
 
+We now need to create the admin user:
+
+```shell
+docker exec -i -t bioportal-api bash
+cd /srv/ncbo/ncbo_cron && bin/ncbo_cron --console
+```
+
+```ruby
+LinkedData::Models::User.new({:username => "admin", :email => "admin@god.org", :role => [LinkedData::Models::Users::Role.find("ADMINISTRATOR").include(:role).first], :password => "password", :apikey => "61297daf-147c-40f3-b9b1-a3a2d6b744fa"}).save
+```
 
 
-## Deployment and initial set-up
+
+## Deployment and initial setup
 
 The first step in deploying this docker compose is to clone this repository:
 ```
