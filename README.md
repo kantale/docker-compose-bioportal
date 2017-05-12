@@ -68,9 +68,17 @@ LinkedData::Models::User.new({:username => "admin", :email => "admin@god.org", :
 * To add a new ontology and submission
 
 ```shell
+# using pullLocation (here Movie Ontology)
 curl -X PUT -H "Content-Type: application/json" -H "Authorization: apikey token=61297daf-147c-40f3-b9b1-a3a2d6b744fa" -d '{ "acronym": "TEST", "name": "Test Ontology", "administeredBy": ["admin"]}' http://localhost:8080/ontologies/TEST
 
-curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/TEST", "hasOntologyLanguage": "OWL", "released": "2013-01-01T16:40:48-08:00", "pullLocation": "https://raw.githubusercontent.com/JervenBolleman/FALDO/master/faldo.ttl"}' http://localhost:8080/ontologies/TEST/submissions
+curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/TEST", "hasOntologyLanguage": "OWL", "released": "2013-01-01T16:40:48-08:00", "pullLocation": "http://www.movieontology.org/2010/01/movieontology.owl"}' http://localhost:8080/ontologies/TEST/submissions
+
+# The STY ttl file has been previously put in data/bioportal. So it is in /srv/bioportal in the container (for uploadFilePath param). But not working
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: apikey token=61297daf-147c-40f3-b9b1-a3a2d6b744fa" -d '{ "acronym": "STY", "name": "UMLS Semantic Network", "administeredBy": ["admin"]}' http://localhost:8080/ontologies/STY
+
+curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/STY", "hasOntologyLanguage": "UMLS", "released": "2013-01-01T16:40:48-08:00", "uploadFilePath": "/srv/bioportal/umls_semantictypes_2015AA.ttl"}' http://localhost:8080/ontologies/STY/submissions
+
+curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/STY", "hasOntologyLanguage": "UMLS", "released": "2013-01-01T16:40:48-08:00", "uploadFilePath": "/srv/bioportal/repository/umls_semantictypes_2015AA.ttl"}' http://localhost:8080/ontologies/STY/submissions
 ```
 
 
