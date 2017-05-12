@@ -19,13 +19,17 @@ begin
     config.repository_folder  = "/srv/bioportal/repository"
     config.goo_host           = "bioportal-4store"
     config.goo_port           = 9000
-    config.search_server_url = "http://bioportal-solr:8983/solr/term_search_core1"
+    config.search_server_url  = "http://bioportal-solr:8983/solr/term_search_core1"
     config.property_search_server_url = "http://bioportal-solr:8983/solr/prop_search_core1"
-    config.rest_url_prefix   = "http://localhost:8080/"
-    config.enable_security   = true
+
+    config.replace_url_prefix = true
+    config.rest_url_prefix    = "http://localhost:8080/"
     config.id_url_prefix      = "http://data.bioontology.org/"
-    config.enable_security    = false # set on false for CRON
-    config.apikey             = "24e0e77e-54e0-11e0-9d7b-005056aa3316"
+
+    # Set this on true to ask for users apikey, if set on false everyone can do anything without apikey (interesting for testing)
+    config.enable_security    = false 
+
+    config.apikey             = "24e0e77e-54e0-11e0-9d7b-005056aa3316" # is it really used?
     config.ui_host            = "#{$SITE_URL}"
     config.sparql_endpoint_url = "http://bioportal-4store:9000/test"
     config.enable_monitoring  = false

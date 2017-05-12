@@ -55,11 +55,12 @@ A quick guide with commands to easily setup a BioPortal appliance on your machin
 * We now need to create the admin user with the apikey `61297daf-147c-40f3-b9b1-a3a2d6b744fa`:
 
 ```shell
-docker exec -i -t bioportal-api bash
-cd /srv/ncbo/ncbo_cron && bin/ncbo_cron --console
+# Access to the NCBO Cron console
+./admin/ncbo-console
 ```
 
 ```ruby
+# Create the user
 LinkedData::Models::User.new({:username => "admin", :email => "admin@god.org", :role => [LinkedData::Models::Users::Role.find("ADMINISTRATOR").include(:role).first], :password => "password", :apikey => "61297daf-147c-40f3-b9b1-a3a2d6b744fa"}).save
 ```
 

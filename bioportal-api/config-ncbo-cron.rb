@@ -14,6 +14,10 @@ LinkedData.config do |config|
   #config.redis_host = "redis-http"
   #config.redis_port=6379
 
+  config.replace_url_prefix = true
+  config.rest_url_prefix    = "http://localhost:8080/"
+  config.id_url_prefix      = "http://data.bioontology.org/"
+
   # Email notifications.
   config.enable_notifications    = true
   config.email_sender            = "sender@domain.com" # Default sender for emails
