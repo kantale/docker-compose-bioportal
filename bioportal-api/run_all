@@ -1,7 +1,5 @@
 #!/bin/bash
 
-service ssh start
-
 #echo "Starting Nginx..."
 #/usr/sbin/nginx &
 rm -rf /srv/ncbo/ontologies_api/log
