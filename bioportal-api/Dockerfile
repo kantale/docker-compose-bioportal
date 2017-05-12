@@ -1,4 +1,4 @@
-FROM ruby:2.2.5
+FROM ruby:2.3.3
 EXPOSE 8080
 
 RUN mkdir /srv/ncbo/
