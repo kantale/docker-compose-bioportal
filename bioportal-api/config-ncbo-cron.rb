@@ -34,7 +34,7 @@ Annotator.config do |config|
 end
 
 NcboCron.config do |config|
-  
+  # Minutes between process ontologies new check 
   config.minutes_between = 3
 
   config.redis_host  = "redis-annotator"

@@ -52,7 +52,7 @@ A quick guide with commands to easily setup a BioPortal appliance on your machin
 ./3_initialize.sh
 ```
 
-We now need to create the admin user:
+* We now need to create the admin user with the apikey `61297daf-147c-40f3-b9b1-a3a2d6b744fa`:
 
 ```shell
 docker exec -i -t bioportal-api bash
@@ -62,6 +62,18 @@ cd /srv/ncbo/ncbo_cron && bin/ncbo_cron --console
 ```ruby
 LinkedData::Models::User.new({:username => "admin", :email => "admin@god.org", :role => [LinkedData::Models::Users::Role.find("ADMINISTRATOR").include(:role).first], :password => "password", :apikey => "61297daf-147c-40f3-b9b1-a3a2d6b744fa"}).save
 ```
+
+
+
+* To add a new ontology and submission
+
+```shell
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: apikey token=61297daf-147c-40f3-b9b1-a3a2d6b744fa" -d '{ "acronym": "TEST", "name": "Test Ontology", "administeredBy": ["admin"]}' http://localhost:8080/ontologies/TEST
+
+curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/TEST", "hasOntologyLanguage": "OWL", "released": "2013-01-01T16:40:48-08:00", "pullLocation": "https://raw.githubusercontent.com/JervenBolleman/FALDO/master/faldo.ttl"}' http://localhost:8080/ontologies/TEST/submissions
+```
+
+
 
 
 
