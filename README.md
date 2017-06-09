@@ -80,7 +80,11 @@ LinkedData::Models::User.new({:username => "admin", :email => "admin@god.org", :
 # using pullLocation (here Movie Ontology)
 curl -X PUT -H "Content-Type: application/json" -H "Authorization: apikey token=61297daf-147c-40f3-b9b1-a3a2d6b744fa" -d '{ "acronym": "TEST", "name": "Test Ontology", "administeredBy": ["admin"]}' http://localhost:8080/ontologies/TEST
 
+# Movie Ontology
 curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/TEST", "hasOntologyLanguage": "OWL", "released": "2016-01-01", "pullLocation": "http://www.movieontology.org/2010/01/movieontology.owl"}' http://localhost:8080/ontologies/TEST/submissions
+
+# AGROOE (ontology test for metadata)
+curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/TEST", "hasOntologyLanguage": "OWL", "released": "2016-01-01", "pullLocation": "https://raw.githubusercontent.com/sifrproject/ontologies_linked_data/sifr_metadata/test/data/ontology_files/agrooeMappings-05-05-2016.owl"}' http://localhost:8080/ontologies/TEST/submissions
 
 # The STY ttl file has been previously put in data/bioportal. So it is in /srv/bioportal in the container (for uploadFilePath param). But not working (the ontology file is not properly copied to the submission repertory)
 curl -X PUT -H "Content-Type: application/json" -H "Authorization: apikey token=61297daf-147c-40f3-b9b1-a3a2d6b744fa" -d '{ "acronym": "STY", "name": "UMLS Semantic Network", "administeredBy": ["admin"]}' http://localhost:8080/ontologies/STY
@@ -89,6 +93,11 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: apikey token=
 cp data/bioportal/umls_semantictypes_2015AA.ttl data/bioportal/repository/umls_semantictypes_2015AA.ttl
 
 curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/STY", "hasOntologyLanguage": "UMLS", "released": "2016-01-01", "uploadFilePath": "/srv/bioportal/repository/umls_semantictypes_2015AA.ttl"}' http://localhost:8080/ontologies/STY/submissions
+
+# Parse the uploaded submissions
+docker exec bioportal-api bash -c "cd /srv/ncbo/ncbo_cron/ && ruby -EUTF-8 ./bin/ncbo_ontology_process -o TEST"
+# All submission
+docker exec bioportal-api bash -c "cd /srv/ncbo/ncbo_cron/ && ruby -EUTF-8 ./bin/ncbo_ontology_process -a"
 ```
 
 
