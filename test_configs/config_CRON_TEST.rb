@@ -1,4 +1,13 @@
 
+begin
+  # For prefLabel extract main_lang first, or anything if no main found.
+  # For other properties only properties with a lang that is included in main_lang are used
+  Goo.main_lang = ["en", "eng", "fr"]
+  Goo.use_cache = true
+rescue NoMethodError
+  puts "(CNFG) >> Goo.main_lang not available"
+end
+
 LinkedData.config do |config|
   #config.repository_folder  = "/srv/test_bioportal/repository"
   config.repository_folder  = "/srv/bioportal/repository"
