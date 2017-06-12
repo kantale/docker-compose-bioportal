@@ -1,3 +1,13 @@
+
+begin
+  # For prefLabel extract main_lang first, or anything if no main found.
+  # For other properties only properties with a lang that is included in main_lang are used
+  Goo.main_lang = ["en", "eng", "fr"]
+  Goo.use_cache = true
+rescue NoMethodError
+  puts "(CNFG) >> Goo.main_lang not available"
+end
+
 LinkedData.config do |config|
   config.enable_monitoring = false
   config.cube_host = "redis-http"
@@ -77,5 +87,3 @@ NcboCron.config do |config|
   # this is a workaround because Github does not allow storing access tokens in a repo
   config.git_repo_access_token = "YOUR GITHUB REPO PERSONAL ACCESS TOKEN, encoded using Base64"
 end
-
-Goo.use_cache = true

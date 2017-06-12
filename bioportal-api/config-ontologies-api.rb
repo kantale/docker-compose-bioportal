@@ -15,6 +15,15 @@ $LOCAL_IP = local_ip
 $SITE_URL = "localhost"
 
 begin
+  # For prefLabel extract main_lang first, or anything if no main found.
+  # For other properties only properties with a lang that is included in main_lang are used
+  Goo.main_lang = ["en", "eng", "fr"]
+  Goo.use_cache = true
+rescue NoMethodError
+  puts "(CNFG) >> Goo.main_lang not available"
+end
+
+begin
   LinkedData.config do |config|
     config.repository_folder  = "/srv/bioportal/repository"
     config.goo_host           = "bioportal-4store"
@@ -50,8 +59,6 @@ begin
     config.enable_http_cache  = true
     config.goo_redis_host     = "redis-goo"
     config.goo_redis_port     = 6379
-
-    Goo.use_cache             = true
 
     # Email notifications
     config.enable_notifications   = false

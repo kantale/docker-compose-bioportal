@@ -92,7 +92,12 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: apikey token=
 # Copy the ontology file in the repository
 cp data/bioportal/umls_semantictypes_2015AA.ttl data/bioportal/repository/umls_semantictypes_2015AA.ttl
 
-curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/STY", "hasOntologyLanguage": "UMLS", "released": "2016-01-01", "uploadFilePath": "/srv/bioportal/repository/umls_semantictypes_2015AA.ttl"}' http://localhost:8080/ontologies/STY/submissions
+curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/STY", "hasOntologyLanguage": "UMLS", "released": "2016-01-01", "uploadFilePath": "/srv/bioportal/repository/umls_semantictypes_2015AA.ttl", "naturalLanguage": ["en", "fr"], "documentation": "http://docu.com", "version": "version1", "description": "c est la description", "numberOfClasses": null, "keyClasses": "key1, key2, key3", "keywords": "keyword1, kword2, kword", "knownUsage": "known usage", "notes": "notessss", "hasContributor": "moi contrib", "hasCreator": "le creator", "designedForOntologyTask": ["http://omv.ontoware.org/2005/05/ontology#AnnotationTask"], "wasGeneratedBy": "des gens", "wasInvalidatedBy": "un méchant", "curatedBy": "le curator", "endorsedBy": ["INRA", "INRIA"], "hasFormalityLevel": "http://w3id.org/nkos/nkostype#classification_schema", "hasLicense": "https://creativecommons.org/licenses/by/4.0/", "hasOntologySyntax": "http://www.w3.org/ns/formats/N-Quads", "isOfType": "http://omv.ontoware.org/2005/05/ontology#CoreOntology", "usedOntologyEngineeringTool": "Protégé"}' http://localhost:8080/ontologies/STY/submissions
+
+
+
+
+
 
 # Parse the uploaded submissions
 docker exec bioportal-api bash -c "cd /srv/ncbo/ncbo_cron/ && ruby -EUTF-8 ./bin/ncbo_ontology_process -o TEST"
@@ -130,6 +135,8 @@ Alternatively, instead of running this script you may manually put the ontologie
 
 ### 2_build_containers.sh 
 This script will check if you have an ssh key, generate one if need be and add it to the authorized keys for the bioportal-api container. Subsequently, it will run `docker-compose build` to build all the containers prior to running them.
+
+Be careful, to make sure the images are really rebuilt (if you perform changes in the git repo for example): `docker-compose build --no-cache`
 
 ### 3_initialize.sh
 This script will run `docker-compose up -d --force-recreate` to start all the containers and services and will then proceed to submit all the ontologies located in the `data/bioportal/repository/`directory. 
