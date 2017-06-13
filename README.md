@@ -77,7 +77,7 @@ LinkedData::Models::User.new({:username => "admin", :email => "admin@god.org", :
 * To add a new ontology and submission
 
 ```shell
-# using pullLocation (here Movie Ontology)
+# Using pullLocation
 curl -X PUT -H "Content-Type: application/json" -H "Authorization: apikey token=61297daf-147c-40f3-b9b1-a3a2d6b744fa" -d '{ "acronym": "TEST", "name": "Test Ontology", "administeredBy": []}' http://localhost:8080/ontologies/TEST
 
 # Movie Ontology
