@@ -78,7 +78,7 @@ LinkedData::Models::User.new({:username => "admin", :email => "admin@god.org", :
 
 ```shell
 # using pullLocation (here Movie Ontology)
-curl -X PUT -H "Content-Type: application/json" -H "Authorization: apikey token=61297daf-147c-40f3-b9b1-a3a2d6b744fa" -d '{ "acronym": "TEST", "name": "Test Ontology", "administeredBy": ["admin"]}' http://localhost:8080/ontologies/TEST
+curl -X PUT -H "Content-Type: application/json" -H "Authorization: apikey token=61297daf-147c-40f3-b9b1-a3a2d6b744fa" -d '{ "acronym": "TEST", "name": "Test Ontology", "administeredBy": []}' http://localhost:8080/ontologies/TEST
 
 # Movie Ontology
 curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/TEST", "hasOntologyLanguage": "OWL", "released": "2016-01-01", "pullLocation": "http://www.movieontology.org/2010/01/movieontology.owl"}' http://localhost:8080/ontologies/TEST/submissions
@@ -93,9 +93,6 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: apikey token=
 cp data/bioportal/umls_semantictypes_2015AA.ttl data/bioportal/repository/umls_semantictypes_2015AA.ttl
 
 curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token=0eab1f37-0f43-46ed-a245-5060b2e2eaa5" -d '{"contact": [{"name": "Admin","email": "admin@god.org"}], "ontology": "http://localhost:8080/ontologies/STY", "hasOntologyLanguage": "UMLS", "released": "2016-01-01", "uploadFilePath": "/srv/bioportal/repository/umls_semantictypes_2015AA.ttl", "naturalLanguage": ["en", "fr"], "documentation": "http://docu.com", "version": "version1", "description": "c est la description", "numberOfClasses": null, "keyClasses": "key1, key2, key3", "keywords": "keyword1, kword2, kword", "knownUsage": "known usage", "notes": "notessss", "hasContributor": "moi contrib", "hasCreator": "le creator", "designedForOntologyTask": ["http://omv.ontoware.org/2005/05/ontology#AnnotationTask"], "wasGeneratedBy": "des gens", "wasInvalidatedBy": "un méchant", "curatedBy": "le curator", "endorsedBy": ["INRA", "INRIA"], "hasFormalityLevel": "http://w3id.org/nkos/nkostype#classification_schema", "hasLicense": "https://creativecommons.org/licenses/by/4.0/", "hasOntologySyntax": "http://www.w3.org/ns/formats/N-Quads", "isOfType": "http://omv.ontoware.org/2005/05/ontology#CoreOntology", "usedOntologyEngineeringTool": "Protégé"}' http://localhost:8080/ontologies/STY/submissions
-
-
-
 
 
 
