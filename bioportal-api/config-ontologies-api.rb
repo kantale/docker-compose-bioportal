@@ -104,8 +104,10 @@ begin
     config.mgrep_lem_port          = 55557
 
     # To add other recognizers
-    config.enable_recognizer_param = false
-    config.supported_recognizers = []
+    config.enable_recognizer_param = true
+    config.supported_recognizers = ["unitex", "mgrep"]
+    config.unitex_host="bioportal-unitex"
+    config.unitex_port=9876
 end
 rescue NameError
   puts "(CNFG) >> Annotator not available, cannot load config"

@@ -8,7 +8,8 @@ tar -xzf apache-maven-3.3.9-bin.tar.gz \
 
 RUN cd / && export PATH=/apache-maven-3.3.9/bin:$PATH && \
 git clone https://github.com/sifrproject/annotators.git && \
-cd /annotators && \ 
+cd /annotators && \
+git checkout docker && \ 
 mkdir -p  sifr-bioportal-annotator-proxy/src/main/resources/ && \  
 echo "annotatorURI=http://bioportal-api:8080/annotator \nsparqlEndpoint=http://bioportal-4store:9000/sparql/ \ncontext.language=FRENCH" > sifr-bioportal-annotator-proxy/src/main/resources/annotatorProxy.properties && \
 mvn clean validate install; cd sifr-bioportal-annotation-model; mvn clean validate install; cd ../sifr-bioportal-annotator-scoring && mvn install && cd ../ && mvn install 

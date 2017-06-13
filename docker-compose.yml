@@ -24,6 +24,10 @@ services:
     extends:
       file: common.yml
       service: redis-goo
+  bioportal-unitex:
+    extends:
+      file: common.yml
+      service: bioportal-unitex
   bioportal-api:
     build: ./bioportal-api/
     container_name: bioportal-api
@@ -31,6 +35,7 @@ services:
       - ./data/bioportal:/srv/bioportal/
       - ./data/ncbo_logs/:/srv/ncbo/ncbo_cron/logs/
       - ./data/mgrep/:/srv/mgrep/dictionary
+      - ./data/unitex:/srv/unitex/
       - ./data/bioportal/reports:/srv/bioportal/reports/
       - ./data/var/run/:/var/run/
     ports:
@@ -43,6 +48,7 @@ services:
       - bioportal-mgrep
       - bioportal-solr
       - bioportal-4store
+      - bioportal-unitex
     links:
       - redis-http
       - redis-goo
@@ -50,6 +56,7 @@ services:
       - bioportal-mgrep
       - bioportal-solr
       - bioportal-4store
+      - bioportal-unitex
   bioportal-annotator-proxy:
     build: ./bioportal-annotator-proxy/
     container_name: bioportal-annotator-proxy
