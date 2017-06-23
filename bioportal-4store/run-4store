@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ ! -d "/srv/4store/ontologies_api" ]; then 4s-backend-setup ontologies_api; fi
+#if [ ! -d "/srv/4store/ontologies_api" ]; then 4s-backend-setup ontologies_api; fi
 
 4s-boss &
 4s-backend ontologies_api &
