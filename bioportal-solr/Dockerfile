@@ -11,7 +11,7 @@ MAINTAINER Vincent Emonet, vincent.emonet@gmail.com
 
 # Install packages.
 RUN apt-get update && \
-            apt-get install -y git wget openjdk-7-jre-headless && \
+            apt-get install -y git wget openjdk-8-jre-headless && \
     rm -rf /var/lib/apt/lists/*
 
 
