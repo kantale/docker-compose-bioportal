@@ -95,7 +95,7 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: apikey token
 
 The first step in deploying this docker compose is to clone this repository:
 ```
-git clone https://github.com/agroportal/docker-compose-bioportal.git
+git clone https://github.com/sifrproject/docker-compose-bioportal.git
 ```
 
 Subsequently, administration scripts are provided to set-up the environment. You may should run them in the following order:
