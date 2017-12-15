@@ -5,7 +5,6 @@ if [ ! -f ~/.ssh/id_rsa.pub  ]; then
 fi
 cat ~/.ssh/id_rsa.pub > ./bioportal-api/authorized_keys
 
-mkdir -p data/4store/
 mkdir -p data/bioportal/repository/
 mkdir -p data/bioportal/reports/
 mkdir -p data/redis/goo/
@@ -13,7 +12,4 @@ mkdir -p data/redis/http/
 mkdir -p data/redis/annotator/
 mkdir -p data/ncbo_logs/
 mkdir -p data/var/run
-sudo rm -rf data/bpclinrec/
-mkdir -p data/bpclinrec/
-echo -e "1111\tTOTO" > data/bpclinrec/dictionary.txt
 docker-compose build
