@@ -6,6 +6,7 @@ bioportal-api/authorized_keys
 data/mgrep/dictionary.txt
 data/redis/
 data/4store
+data/submit
 data/bioportal/
 data/var
 data/bioportal/reports

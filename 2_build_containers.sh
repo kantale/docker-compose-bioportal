@@ -12,7 +12,8 @@ mkdir -p data/redis/http/
 mkdir -p data/redis/annotator/
 mkdir -p data/ncbo_logs/
 mkdir -p data/var/run
-	
+mkdir -p data/submit/
+
 git checkout data/4store/
 
 docker-compose build

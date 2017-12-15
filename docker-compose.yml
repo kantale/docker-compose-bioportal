@@ -29,6 +29,7 @@ services:
     container_name: bioportal-api
     volumes:
       - ./data/bioportal:/srv/bioportal/
+      - ./data/submit:/srv/submit/
       - ./data/ncbo_logs/:/srv/ncbo/ncbo_cron/logs/
       - ./data/bpclinrec/:/bpclinrec/dictionary
       - ./data/bioportal/reports:/srv/bioportal/reports/
