@@ -15,8 +15,8 @@ mvn clean validate install; cd sifr-bioportal-annotation-model; mvn clean valida
 
 RUN apt-get update && apt-get -y install dialog openjdk-8-source tomcat8 
 
-RUN cp -r /annotators/sifr-bioportal-annotator-proxy/target/sifr-bioportal-annotator-proxy-0.1-SNAPSHOT.war /var/lib/tomcat8/webapps/ROOT/annotator.war
-
+RUN mkdir -p /var/lib/tomcat8/webapps/ROOT/annotator && cp -r /annotators/sifr-bioportal-annotator-proxy/target/annotator.war /var/lib/tomcat8/webapps/ROOT/annotator/annotator.war && rm /var/lib/tomcat8/webapps/ROOT/index.html && cd /var/lib/tomcat8/webapps/ROOT/annotator/ && unzip annotator.war
+ 
 COPY server.xml /etc/tomcat8/
 COPY start.sh /usr/bin/
 
