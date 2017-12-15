@@ -1,0 +1,2 @@
+#!/bin/bash
+java -jar /bpclinrec/target/clinicalrecognizer.jar 55555 /bpclinrec/dictionary/dictionary.txt

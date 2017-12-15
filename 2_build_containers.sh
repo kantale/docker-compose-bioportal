@@ -13,7 +13,7 @@ mkdir -p data/redis/http/
 mkdir -p data/redis/annotator/
 mkdir -p data/ncbo_logs/
 mkdir -p data/var/run
-sudo rm -rf data/mgrep/
-mkdir -p data/mgrep/
-echo -e "1111\tTOTO" > data/mgrep/dictionary.txt
+sudo rm -rf data/bpclinrec/
+mkdir -p data/bpclinrec/
+echo -e "1111\tTOTO" > data/bpclinrec/dictionary.txt
 docker-compose build
