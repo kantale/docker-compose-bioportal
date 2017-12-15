@@ -6,7 +6,7 @@ pushd `dirname $pwd`
 
 
 echo "Processing ontologies..."
-for ONTFILE in $(ls -1 $pwd/data/bioportal/repository/*.ttl); do
+for ONTFILE in $(ls -1 $pwd/data/submit/*.ttl); do
 	ACRONYM=$(basename $ONTFILE | cut -d'.' -f1)
 	echo -e "\t$ACRONYM :Creating acronym and submitting ontology file..."
 	
@@ -16,7 +16,7 @@ for ONTFILE in $(ls -1 $pwd/data/bioportal/repository/*.ttl); do
 
 done
 
-for ONTFILE in $(ls -1 $pwd/data/bioportal/repository/*.owl); do
+for ONTFILE in $(ls -1 $pwd/data/submit/*.owl); do
 	ACRONYM=$(basename $ONTFILE | cut -d'.' -f1)
 	echo -e "\t$ACRONYM :Creating acronym and submitting ontology file..."
 	
@@ -26,7 +26,7 @@ for ONTFILE in $(ls -1 $pwd/data/bioportal/repository/*.owl); do
 
 done
 
-for ONTFILE in $(ls -1 $pwd/data/bioportal/repository/*.skos); do
+for ONTFILE in $(ls -1 $pwd/data/submit/*.skos); do
 	ACRONYM=$(basename $ONTFILE | cut -d'.' -f1)
 	echo -e "\t$ACRONYM :Creating acronym and submitting ontology file..."
 	
