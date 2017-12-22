@@ -25,20 +25,20 @@ services:
     image: redis:3.0.7-alpine
     container_name: bioportal-redis-annotator
     ports: 
-      - "6379"
+      - "6379:6379"
     volumes:
       - ./data/redis/annotator/:/data
   redis-http:
     image: redis:3.0.7-alpine
     container_name: bioportal-redis-http
     ports: 
-      - "6379"
+      - "6380:6379"
     volumes:
       - ./data/redis/http/:/data
   redis-goo:
     image: redis:3.0.7-alpine
     container_name: bioportal-redis-goo
     ports: 
-      - "6379"
+      - "6381:6379"
     volumes:
       - ./data/redis/goo:/data
