@@ -4,10 +4,10 @@ services:
     extends:
       file: common.yml
       service: bioportal-4store
-  bioportal-clinrec:
+  bioportal-mgrep:
     extends:
       file: common.yml
-      service: bioportal-clinrec
+      service: bioportal-mgrep
   bioportal-solr:
     extends:
       file: common.yml
@@ -24,9 +24,6 @@ services:
     extends:
       file: common.yml
       service: redis-goo
-  bioportal-api:
-    build: ./bioportal-api/
-    container_name: bioportal-api
     volumes:
       - ./data/bioportal:/srv/bioportal/
       - ./data/submit:/srv/submit/
@@ -36,19 +33,18 @@ services:
       - ./data/var/run/:/var/run/
     ports:
       - "8080:8080"
-      - "2222:22"
     depends_on:
       - redis-http
       - redis-goo
       - redis-annotator
-      - bioportal-clinrec
+      - bioportal-mgrep
       - bioportal-solr
       - bioportal-4store
     links:
       - redis-http
       - redis-goo
       - redis-annotator
-      - bioportal-clinrec
+      - bioportal-mgrep
       - bioportal-solr
       - bioportal-4store
   bioportal-annotator-proxy:

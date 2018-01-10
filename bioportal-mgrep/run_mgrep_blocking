@@ -1,0 +1,3 @@
+#!/bin/bash
+/opt/mgrep/mgrep --port=55555 -w /opt/mgrep/word_divider.txt -c /opt/mgrep/CaseFolding.txt -f /opt/mgrep/dictionary/dictionary.txt
+sleep infinity

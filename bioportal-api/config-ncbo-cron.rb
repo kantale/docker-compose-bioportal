@@ -30,9 +30,9 @@ LinkedData.config do |config|
 end
 
 Annotator.config do |config|
-  config.mgrep_dictionary_file   = "/bpclinrec/dictionary/dictionary.txt"
+  config.mgrep_dictionary_file   = "/opt/mgrep/dictionary/dictionary.txt"
   config.stop_words_default_file = "./config/french_stop_words.txt"
-  config.mgrep_host              = "bioportal-clinrec"
+  config.mgrep_host              = "bioportal-mgrep"
   config.mgrep_port              = 55555
   config.annotator_redis_host  = "redis-annotator"
   config.annotator_redis_port  = 6379

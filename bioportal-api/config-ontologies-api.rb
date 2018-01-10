@@ -86,11 +86,11 @@ end
 
 begin
   Annotator.config do |config|
-    config.mgrep_dictionary_file   = "/bpclinrec/dictionary/dictionary.txt"
+    config.mgrep_dictionary_file   = "/opt/mgrep/dictionary/dictionary.txt"
     config.stop_words_default_file = "/srv/ncbo/ncbo_cron/config/french_stop_words.txt"
-    config.mgrep_host              = "bioportal-clinrec"
+    config.mgrep_host              = "bioportal-mgrep"
     config.mgrep_port              = 55555
-    config.mgrep_alt_host          = "bioportal-clinrec"
+    config.mgrep_alt_host          = "bioportal-mgrep"
     config.mgrep_alt_port          = 55555
     config.annotator_redis_host    = "redis-annotator"
     config.annotator_redis_port    = 6379
