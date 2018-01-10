@@ -7,13 +7,13 @@ services:
       - "9000:9000"
     volumes: 
       - ./data/4store/:/var/lib/4store
-  bioportal-mgrep:
-    build: ./bioportal-mgrep
-    container_name: bioportal-mgrep
+  bioportal-clinrec:
+    build: ./bioportal-clinrec
+    container_name: bioportal-clinrec
     ports: 
       - "55555:55555"
     volumes:
-      - ./data/mgrep/:/opt/mgrep/dictionary
+      - ./data/bpclinrec/:/bpclinrec/dictionary
   bioportal-solr:
     build: ./bioportal-solr
     container_name: bioportal-solr
@@ -25,20 +25,20 @@ services:
     image: redis:3.0.7-alpine
     container_name: bioportal-redis-annotator
     ports: 
-      - "6379"
+      - "6379:6379"
     volumes:
       - ./data/redis/annotator/:/data
   redis-http:
     image: redis:3.0.7-alpine
     container_name: bioportal-redis-http
     ports: 
-      - "6379"
+      - "6380:6379"
     volumes:
       - ./data/redis/http/:/data
   redis-goo:
     image: redis:3.0.7-alpine
     container_name: bioportal-redis-goo
     ports: 
-      - "6379"
+      - "6381:6379"
     volumes:
       - ./data/redis/goo:/data

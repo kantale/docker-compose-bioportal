@@ -6,5 +6,5 @@ printf "\e[1m Re-generating dictionary... \e[0m \n"
 docker exec  bioportal-api bash -c "cd /srv/ncbo/ncbo_cron/ && echo 'yes' | ruby -EUTF-8 ./bin/ncbo_ontology_annotate_generate_dictionary -l logs/dictionary-gen.log" 2>/dev/null
 
 
-docker-compose restart bioportal-mgrep
+docker-compose restart bioportal-clinrec
 popd

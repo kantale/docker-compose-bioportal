@@ -10,24 +10,20 @@ RUN cd / && export PATH=/apache-maven-3.3.9/bin:$PATH && \
 git clone https://github.com/sifrproject/annotators.git && \
 cd /annotators && \ 
 mkdir -p  sifr-bioportal-annotator-proxy/src/main/resources/ && \  
-echo "annotatorURI=http://bioportal-api:8080/annotator \nsparqlEndpoint=http://bioportal-4store:9000/sparql/ \ncontext.language=FRENCH" > sifr-bioportal-annotator-proxy/src/main/resources/annotatorProxy.properties && \
+echo "annotatorURI=http://bioportal-api:8080/annotator \nsparqlEndpoint=http://bioportal-4store:9000/sparql/ \ncontext.language=FRENCH \nserver.encoding = utf8" > sifr-bioportal-annotator-proxy/src/main/resources/annotatorProxy.properties && \
 mvn clean validate install; cd sifr-bioportal-annotation-model; mvn clean validate install; cd ../sifr-bioportal-annotator-scoring && mvn install && cd ../ && mvn install 
 
-RUN wget http://mirrors.ircam.fr/pub/apache/tomcat/tomcat-6/v6.0.53/bin/apache-tomcat-6.0.53.tar.gz && \
-tar -xzf apache-tomcat-6.0.53.tar.gz && \
-rm apache-tomcat-6.0.53.tar.gz && \
-cd apache-tomcat-6.0.53
+RUN apt-get update && apt-get -y install dialog openjdk-8-source tomcat8 
 
-RUN cp -r /annotators/sifr-bioportal-annotator-proxy/target/sifr-bioportal-annotator-proxy-0.1-SNAPSHOT.war /apache-tomcat-6.0.53/webapps/annotator.war
-
-COPY server.xml /apache-tomcat-6.0.53/conf/
-
-ENV CATALINA_HOME /apache-tomcat-6.0.53
+RUN mkdir -p /var/lib/tomcat8/webapps/annotator && cp -r /annotators/sifr-bioportal-annotator-proxy/target/annotator.war /var/lib/tomcat8/webapps/annotator/annotator.war && rm /var/lib/tomcat8/webapps/ROOT/index.html && cd /var/lib/tomcat8/webapps/annotator/ && unzip annotator.war
+ 
+COPY server.xml /etc/tomcat8/
+COPY start.sh /usr/bin/
 
 WORKDIR /annotators/sifr-bioportal-annotator-proxy
 
 EXPOSE 8081
 
-CMD ["/apache-tomcat-6.0.53/bin/catalina.sh", "run"] 
+CMD ["/bin/bash" ,"/usr/bin/start.sh"] 
 
 
