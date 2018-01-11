@@ -4,6 +4,7 @@
 pwd=`pwd`
 pushd `dirname $pwd`
 
+rm $pwd/data/submit/mappings.ttl $pwd/data/submit/labels.ttl
 
 echo "Processing ontologies..."
 for ONTFILE in $(ls -1 $pwd/data/submit/*.ttl); do
