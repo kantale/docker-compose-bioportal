@@ -26,7 +26,7 @@ elif [ "$PORTAL" == "ncbo" ]; then
 	URL="http://data.bioontology.org"
 fi
 
-mkdir -p data/bioportal/repository/
+mkdir -p data/submit/
 
 for ACRONYM in $ONTOLOGIES
 do
@@ -34,7 +34,7 @@ do
   DOWNLOADURL="$URL/ontologies/$ACRONYM/download?apikey=$APIKEY"
   STATUS=$(curl -I "$URL/ontologies/$ACRONYM/download?apikey=$APIKEY" 2>/dev/null | grep HTTP | cut -d' ' -f2)
   if [ "$STATUS" == "200" ]; then
-    wget -c $DOWNLOADURL -q -O data/bioportal/repository/$ACRONYM.ttl
+    wget -c $DOWNLOADURL -q -O data/submit/$ACRONYM.ttl
     printf "\e[1m \e[32m [OK]\n \e[0m"
   elif [ "$STATUS" == "403" ]; then 
     printf "\e[91m [FAIL]\n\t \e[0m Licensing restrictions for $ACRONYM prevent the download...\n"
