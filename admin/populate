@@ -9,19 +9,28 @@ rm $pwd/data/submit/mappings.ttl $pwd/data/submit/labels.ttl
 echo "Processing ontologies..."
 for ONTFILE in $(ls -1 $pwd/data/submit/*.ttl); do
 	ACRONYM=$(basename $ONTFILE | cut -d'.' -f1)
-	echo -e "\t$ACRONYM :Creating acronym and submitting ontology file..."
+	echo -e "\n\t$ACRONYM :Creating acronym"
 	
 	curl -X POST -H "Content-Type: application/json" -d "{ \"acronym\": \"$ACRONYM\", \"name\": \"$ACRONYM\", \"administeredBy\": [ ] }"  http://localhost:8080/ontologies 
 
+	echo -e "\n\t$ACRONYM : Submitting ontology file..."	
+
 	curl -X POST -H "Content-Type: application/json" -d "{ \"hasOntologyLanguage\": \"OWL\", \"uploadFilePath\": \"/srv/submit/$ACRONYM.ttl\", \"contact\": [{\"name\": \"Admin\", \"email\": \"admin@god.fr\"}],\"released\": \"2015-09-06\"}"  http://localhost:8080/ontologies/$ACRONYM/submissions	
+
+	echo "curl -X POST -H 'Content-Type: application/json' -d { \"hasOntologyLanguage\": \"OWL\", \"uploadFilePath\": \"/srv/submit/$ACRONYM.ttl\", \"contact\": [{\"name\": \"Admin\", \"email\": \"admin@god.fr\"}],\"released\": \"2015-09-06\"}  http://localhost:8080/ontologies/$ACRONYM/submission" 
+
 
 done
 
 for ONTFILE in $(ls -1 $pwd/data/submit/*.owl); do
 	ACRONYM=$(basename $ONTFILE | cut -d'.' -f1)
-	echo -e "\t$ACRONYM :Creating acronym and submitting ontology file..."
+	echo -e "\n\t$ACRONYM :Creating acronym..."
 	
 	curl -X POST -H "Content-Type: application/json" -d "{ \"acronym\": \"$ACRONYM\", \"name\": \"$ACRONYM\", \"administeredBy\": [ ] }"  http://localhost:8080/ontologies 
+
+	
+	echo -e "\n\t$ACRONYM : Submitting ontology file..."
+	
 
 	curl -X POST -H "Content-Type: application/json" -d "{ \"hasOntologyLanguage\": \"OWL\", \"uploadFilePath\": \"/srv/submit/$ACRONYM.owl\", \"contact\": [{\"name\": \"Admin\", \"email\": \"admin@god.fr\"}],\"released\": \"2015-09-06\"}"  http://localhost:8080/ontologies/$ACRONYM/submissions	
 
@@ -29,9 +38,12 @@ done
 
 for ONTFILE in $(ls -1 $pwd/data/submit/*.skos); do
 	ACRONYM=$(basename $ONTFILE | cut -d'.' -f1)
-	echo -e "\t$ACRONYM :Creating acronym and submitting ontology file..."
+	echo -e "\n\t$ACRONYM :Creating acronym..."
 	
 	curl -X POST -H "Content-Type: application/json" -d "{ \"acronym\": \"$ACRONYM\", \"name\": \"$ACRONYM\", \"administeredBy\": [ ] }"  http://localhost:8080/ontologies 
+
+	echo -e "\n\t$ACRONYM : Submitting ontology file..."
+	
 
 	curl -X POST -H "Content-Type: application/json" -d "{ \"hasOntologyLanguage\": \"SKOS\", \"uploadFilePath\": \"/srv/submit/$ACRONYM.skos\", \"contact\": [{\"name\": \"Admin\", \"email\": \"admin@god.fr\"}],\"released\": \"2015-09-06\"}"  http://localhost:8080/ontologies/$ACRONYM/submissions	
 

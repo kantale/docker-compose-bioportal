@@ -24,6 +24,9 @@ services:
     extends:
       file: common.yml
       service: redis-goo
+  bioportal-api:
+    build: ./bioportal-api
+    container_name: bioportal-api
     volumes:
       - ./data/bioportal:/srv/bioportal/
       - ./data/submit:/srv/submit/
