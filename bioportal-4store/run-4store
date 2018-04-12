@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -d /var/lib/4store/ontologies_api/ ] && [ -z "$(ls -A /var/lib/4store/ontologies_api)" ]; then
+	4s-backend-setup ontologies_api
+fi
+
 4s-boss &
 4s-backend ontologies_api &
 4s-httpd -p 9000 -s -1 ontologies_api &

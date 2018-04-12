@@ -32,6 +32,7 @@ services:
       - ./data/submit:/srv/submit/
       - ./data/ncbo_logs/:/srv/ncbo/ncbo_cron/logs/
       - ./data/bpclinrec/:/bpclinrec/dictionary
+      - ./data/mgrep/:/opt/mgrep/dictionary/
       - ./data/bioportal/reports:/srv/bioportal/reports/
       - ./data/var/run/:/var/run/
     ports:

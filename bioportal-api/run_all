@@ -10,10 +10,4 @@ echo "Starting NCBO Cron..."
 
 sleep 20
 
-echo "Creating admin user... With apikey: 61297daf-147c-40f3-b9b1-a3a2d6b744fa"
-
-curl -X POST -H 'Content-Type: application/json' -d '{"username": "admin", "email": "admin@god.org", "role": ["ADMINISTRATOR"], "password": "password", "apikey": "61297daf-147c-40f3-b9b1-a3a2d6b744fa"}' http://localhost:8080/users
-
-echo "61297daf-147c-40f3-b9b1-a3a2d6b744fa" > /srv/bioportal/apikey
-
 sleep infinity
