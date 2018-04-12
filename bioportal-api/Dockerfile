@@ -8,8 +8,8 @@ RUN mkdir -p /srv/bioportal/repository
 RUN cd /srv/ncbo && \
 git clone https://github.com/sifrproject/ontologies_api.git && \
 git clone https://github.com/sifrproject/ncbo_cron.git && \
-cd /srv/ncbo/ontologies_api/ && git checkout sifr && bundle install && \
-cd /srv/ncbo/ncbo_cron/ && git checkout sifr && bundle install
+cd /srv/ncbo/ontologies_api/ && git checkout  lirmm && bundle install && \
+cd /srv/ncbo/ncbo_cron/ && git checkout lirmm && bundle install
 
 #RUN gem install rails
 
@@ -32,9 +32,6 @@ COPY french_stop_words.txt /srv/ncbo/ncbo_cron/config/french_stop_words.txt
 COPY english_stop_words.txt /srv/ncbo/ncbo_cron/config/english_stop_words.txt
 COPY unicorn /srv/ncbo/
 COPY run_all /srv/ncbo/
-
-RUN mkdir /root/.ssh/
-COPY authorized_keys /root/.ssh/
 
 WORKDIR /srv/ncbo/
 

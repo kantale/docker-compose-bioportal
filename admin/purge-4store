@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker exec bioportal-4store bash -c "rm -rf /srv/4store/ontologies_api/ && 4s-backend-setup ontologies_api"
+
