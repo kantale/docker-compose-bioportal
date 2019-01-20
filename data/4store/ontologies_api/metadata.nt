@@ -1,0 +1,18 @@
+@base <file:///var/lib/4store/ontologies_api/metadata.nt> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<>
+    <http://4store.org/metadata#bnode> "1" ;
+    <http://4store.org/metadata#code_version> "v1.1.5-122-g1788d29" ;
+    <http://4store.org/metadata#hash> "none" ;
+    <http://4store.org/metadata#hash_function> "UMAC" ;
+    <http://4store.org/metadata#kb_name> "ontologies_api" ;
+    <http://4store.org/metadata#model_data> "true" ;
+    <http://4store.org/metadata#model_files> "false" ;
+    <http://4store.org/metadata#num_segments> "2" ;
+    <http://4store.org/metadata#salt> "0" ;
+    <http://4store.org/metadata#segment_p> "0", "1" ;
+    <http://4store.org/metadata#store_type> "native" ;
+    <http://4store.org/metadata#uuid> "7b7f1f09-7090-4c7c-8553-c33905760098" ;
+    <http://4store.org/metadata#version> "11" .
+
