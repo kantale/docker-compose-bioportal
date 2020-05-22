@@ -1,0 +1,10 @@
+--- hotspot/make/linux/Makefile	2020-05-17 12:04:02.249234000 +0000
++++ hotspot/make/linux/Makefile_new	2020-05-17 12:26:54.713403000 +0000
+@@ -226,6 +226,7 @@
+ # Disable this check by setting DISABLE_HOTSPOT_OS_VERSION_CHECK=ok.
+ 
+ SUPPORTED_OS_VERSION = 2.4% 2.5% 2.6% 3%
++DISABLE_HOTSPOT_OS_VERSION_CHECK=ok
+ OS_VERSION := $(shell uname -r)
+ EMPTY_IF_NOT_SUPPORTED = $(filter $(SUPPORTED_OS_VERSION),$(OS_VERSION))
+ 

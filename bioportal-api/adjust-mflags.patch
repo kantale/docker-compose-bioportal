@@ -1,0 +1,10 @@
+--- hotspot/make/linux/makefiles/adjust-mflags.sh	2020-05-17 12:04:02.249234000 +0000
++++ hotspot/make/linux/makefiles/adjust-mflags_new.sh	2020-05-17 12:38:04.288326000 +0000
+@@ -64,7 +64,6 @@
+ 	echo "$MFLAGS" \
+ 	| sed '
+ 		s/^-/ -/
+-		s/ -\([^ 	][^ 	]*\)j/ -\1 -j/
+ 		s/ -j[0-9][0-9]*/ -j/
+ 		s/ -j\([^ 	]\)/ -j -\1/
+ 		s/ -j/ -j'${HOTSPOT_BUILD_JOBS:-${default_build_jobs}}'/
